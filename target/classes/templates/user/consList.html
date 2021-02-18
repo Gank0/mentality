@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<a th:href="#">咨询师1</a>-->
+<!--<a th:href="#">咨询师2</a>-->
+
+
+<table>
+    <tr>
+        <td>img</td>
+        <td>name</td>
+        <td>gender</td>
+        <td>introduction</td>
+        <td>option</td>
+    </tr>
+
+
+    <tr th:each="con:${Cons}">
+        <td>
+            <img th:src="@{${con.imgSrc}}">
+        </td>
+        <td>
+            <span th:text="${con.name}"></span>
+        </td>
+        <td>
+            <span th:text="${con.gender}"></span>
+        </td>
+        <td>
+            <span th:text="${con.introduction}"></span>
+        </td>
+        <td>
+            <a th:href="@{/consulant/findConById(id=${con.id})}">咨询</a>
+        </td>
+    </tr>
+
+</table>
+</body>
+</html>

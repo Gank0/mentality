@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.mentality.dao.RecordDAO">
+
+    <insert id="saveRecord" parameterType="com.bishe.mentality.entity.Record">
+        insert  into t_record values(#{s_no},#{Testno1},#{answer1},#{Testno2},#{answer2},#{Testno3},#{answer3},#{Testno4},#{answer4},#{Testno5},#{answer5},#{score})
+    </insert>
+    <select id="findAllRecord" resultType="com.bishe.mentality.entity.Record">
+        select s_no,Testno1,answer1,Testno2,answer2,Testno3,answer3,Testno4,answer4,Testno5,answer5,score from t_record
+    </select>
+    <select id="findRecord" resultType="com.bishe.mentality.entity.Record">
+        select s_no,Testno1,answer1,Testno2,answer2,Testno3,answer3,Testno4,answer4,Testno5,answer5,score from t_record where s_no=#{s_no}
+    </select>
+
+</mapper>

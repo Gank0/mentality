@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ss</title>
+</head>
+<body>
+
+<h1 th:text="${uid}"></h1>
+
+<table>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>password</td>
+        <td>options</td>
+    </tr>
+    <tr th:each="admin:${admins}">
+        <td>
+            <span th:text="${admin.id}"></span>
+        </td>
+        <td>
+            <span th:text="${admin.name}"></span>
+        </td>
+        <td>
+            <span th:text="${admin.password}"></span>
+        </td>
+        <td>
+            <a th:href="@{/admin/deleteAdmin(id=${admin.id})}">删除</a>
+            <a th:href="@{/admin/findAdmin(id=${admin.id})}">修改</a>
+        </td>
+    </tr>
+
+</table>
+<p>
+    <button onclick="location.href='/toAdd'">add</button>
+</p>
+</body>
+</html>

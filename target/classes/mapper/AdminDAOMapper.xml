@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.mentality.dao.AdmDAO">
+    <!--注册-->
+    <insert id="addAdmin" parameterType="com.bishe.mentality.entity.Admin">
+        insert  into t_admin values(#{id},#{name},#{password})
+    </insert>
+<!--    登录 loginAdmin-->
+    <select id="loginAdmin" resultType="com.bishe.mentality.entity.Admin">
+        select id,name,password from t_admin where id=#{id} and password=#{password}
+    </select>
+<!--    查询所有-->
+    <select id="findAllAdmin" resultType="com.bishe.mentality.entity.Admin">
+        select id,name,password from t_admin
+    </select>
+
+    <delete id="deleteAdmin" parameterType="String">
+        delete from t_admin where id=#{id}
+    </delete>
+
+<!--    根据id查管理员信息-->
+    <select id="findAdmin" parameterType="String" resultType="com.bishe.mentality.entity.Admin">
+        select id,name,password from t_admin where id=#{id}
+    </select>
+    <!--    根据id修改信息-->
+    <update id="editAdmin" parameterType="com.bishe.mentality.entity.Admin">
+        update t_admin set name=#{name},password=#{password} where id=#{id}
+    </update>
+
+
+</mapper>

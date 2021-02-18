@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ss</title>
+</head>
+
+
+<body>
+<form th:action="@{/admin/editAdmin}" method="post">
+    <table>
+        <tr>
+            <td>
+                id:
+            </td>
+            <td>
+                <span th:text="${admin.id}"></span>
+                <input type="hidden" th:value="${admin.id}" name="id">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                name:
+            </td>
+            <td>
+                <input type="text" th:value="${admin.name}" name="name">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                password:
+            </td>
+            <td>
+                <input type="text" th:value="${admin.password}" name="password"></input>
+            </td>
+        </tr>
+
+    </table>
+<!--    <button type="reset">重置</button>-->
+    <button type="submit">提交</button>
+</form>
+</body>
+</html>

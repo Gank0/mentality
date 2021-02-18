@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.mentality.dao.TestqDAO">
+
+    <insert id="addQ" parameterType="com.bishe.mentality.entity.Testquestion">
+        insert  into t_testquestion values(#{Testno},#{testQuestion},#{answerA},#{answerB},#{answerC},#{answerD},#{scoreA},#{scoreB},#{scoreC},#{scoreD})
+    </insert>
+
+<!--    查询所有题目-->
+    <select id="findAllQ" resultType="com.bishe.mentality.entity.Testquestion">
+        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD from t_testquestion
+    </select>
+
+    <!--    查询1题目-->
+    <select id="findQByNo" parameterType="int" resultType="com.bishe.mentality.entity.Testquestion">
+        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD from t_testquestion where Testno=#{Testno}
+    </select>
+
+<!--    删除by no-->
+    <delete id="deleteQByNo" parameterType="int">
+        delete from t_testquestion where Testno=#{Testno}
+    </delete>
+    <!--    根据id修改信息-->
+    <update id="updateQ" parameterType="com.bishe.mentality.entity.Testquestion">
+        update t_testquestion set testQuestion=#{testQuestion},answerA=#{answerA},answerB=#{answerB},
+        answerC=#{answerC},answerD=#{answerD},scoreA=#{scoreA},scoreB=#{scoreB},
+        scoreC=#{scoreC},scoreD=#{scoreD} where Testno=#{Testno}
+    </update>
+
+<!--    随机选择xx题-->
+    <select id="randomSelect" resultType="com.bishe.mentality.entity.Testquestion">
+        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD from t_testquestion ORDER BY RAND() LIMIT 5
+    </select>
+
+    <select id="scoreA" parameterType="int" resultType="int">
+        select scoreA from t_testquestion where Testno=#{Testno}
+    </select>
+    <select id="scoreB" parameterType="int" resultType="int">
+        select scoreB from t_testquestion where Testno=#{Testno}
+    </select>
+    <select id="scoreC" parameterType="int" resultType="int">
+        select scoreC from t_testquestion where Testno=#{Testno}
+    </select>
+    <select id="scoreD" parameterType="int" resultType="int">
+        select scoreD from t_testquestion where Testno=#{Testno}
+    </select>
+
+<!--    <delete id="deleteAdmin" parameterType="String">-->
+<!--        delete from t_admin where id=#{id}-->
+<!--    </delete>-->
+
+
+<!--    &lt;!&ndash;    根据id修改信息&ndash;&gt;-->
+<!--    <update id="editAdmin" parameterType="com.bishe.mentality.entity.Admin">-->
+<!--        update t_admin set name=#{name},password=#{password} where id=#{id}-->
+<!--    </update>-->
+
+
+</mapper>

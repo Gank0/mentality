@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.mentality.dao.ConsuDAO">
+
+<!--    登录 loginAdmin-->
+    <select id="conlogin" resultType="com.bishe.mentality.entity.Consultant">
+        select id,name,password,gender from t_consultant where id=#{id} and password=#{password}
+    </select>
+
+<!--   查询所有/咨询师信息-->
+    <select id="findAllCon" resultType="com.bishe.mentality.entity.Consultant">
+        select id,name,password,gender,introduction,imgSrc from t_consultant
+    </select>
+
+    <delete id="deleteCon" parameterType="String">
+        delete from t_consultant where id=#{id}
+    </delete>
+
+    <!--    根据id查咨询师信息-->
+    <select id="findCon" parameterType="String" resultType="com.bishe.mentality.entity.Consultant">
+        select  id,name,password,gender,introduction,imgSrc from t_consultant where id=#{id}
+    </select>
+    <!--    根据id修改信息-->
+    <update id="editCon" parameterType="com.bishe.mentality.entity.Consultant">
+        update t_consultant set name=#{name},password=#{password},gender=#{gender},introduction=#{introduction},
+        imgSr=#{imgSr} where id=#{id}
+    </update>
+    
+    <select id="busyDay" parameterType="String" resultType="java.util.Date">
+        select DATE_FORMAT(apptime,'%Y-%m-%d') as busyTime from t_appointment where c_id=#{c_id}  UNION select DATE_FORMAT(leavetime,'%Y-%m-%d') as busyTime from t_conLeave where c_id=#{id}
+    </select>
+
+
+</mapper>
+
