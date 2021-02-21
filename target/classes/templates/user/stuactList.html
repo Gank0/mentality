@@ -4,26 +4,35 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<title>Pike Admin PRO</title>
-		<meta name="description" content="Bootstrap 4 Admin Theme | Pike Admin">
+		<title></title>
+		<meta name="description" content="">
 		
 
 		<!-- Favicon -->
-        <link rel="shortcut icon" th:href="@{~/assets/images/favicon1.ico}">
+		<link rel="shortcut icon" th:href="@{~/assets/images/favicon1.ico}">
 
-        <!-- Switchery css -->
+         <!-- Switchery css -->
         <link th:href="@{~/assets/plugins/switchery/switchery.min.css}" rel="stylesheet" />
-        <!-- Bootstrap CSS -->
-        <link th:href="@{~/assets/css/bootstrap1.min.css}" rel="stylesheet" type="text/css" />
+		<!-- Bootstrap CSS -->
+		<link th:href="@{~/assets/css/bootstrap1.min.css}" rel="stylesheet" type="text/css" />
 
-        <!-- Font Awesome CSS -->
-        <link th:href="@{~/assets/font-awesome/css/font-awesome1.min.css}" rel="stylesheet" type="text/css" />
+		<!-- Font Awesome CSS -->
+		<link th:href="@{~/assets/font-awesome/css/font-awesome1.min.css}" rel="stylesheet" type="text/css" />
 
-        <!-- Custom CSS -->
-        <link th:href="@{~/assets/css/style1.css}" rel="stylesheet" type="text/css" />
-
-    <!-- BEGIN CSS for this page -->
-		<link rel="stylesheet" th:href="@{~/assets/plugins/trumbowyg/ui/trumbowyg.min.css}">
+		<!-- Custom CSS -->
+		<link th:href="@{~/assets/css/style1.css}" rel="stylesheet" type="text/css" />
+		
+		<!-- BEGIN CSS for this page -->
+		<link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css}"/>
+		<style>
+		td.details-control {
+		background: url('assets/plugins/datatables/img/details_open.png') no-repeat center center;
+		cursor: pointer;
+		}
+		tr.shown td.details-control {
+		background: url('assets/plugins/datatables/img/details_close.png') no-repeat center center;
+		}
+		</style>
 		<!-- END CSS for this page -->
 				
 </head>
@@ -37,8 +46,8 @@
 
 		<!-- LOGO -->
         <div class="headerbar-left">
-			<a href="index.html" class="logo"><img alt="logo" th:src="@{~/assets/images/logo.png}" /> <span>Admin</span></a>
-        </div>
+			<a href="#" class="logo"><img alt="Logo" th:src="@{~/assets/images/logo.png}" /> <span>Admin</span></a>
+		</div>
 
         <nav class="navbar-custom">
 
@@ -136,7 +145,7 @@
                                 <!-- item-->
                                 <a href="#" class="dropdown-item notify-item">
                                     <div class="notify-icon bg-faded">
-                                        <img src="assets/images/avatars/avatar2.png" alt="img" class="rounded-circle img-fluid">
+                                        <img th:src="@{~/assets/images/avatars/avatar2.png}" alt="img" class="rounded-circle img-fluid">
                                     </div>
                                     <p class="notify-details">
                                         <b>John Doe</b>
@@ -148,7 +157,7 @@
                                 <!-- item-->
                                 <a href="#" class="dropdown-item notify-item">
                                     <div class="notify-icon bg-faded">
-                                        <img src="assets/images/avatars/avatar3.png" alt="img" class="rounded-circle img-fluid">
+                                        <img th:src="@{~/assets/images/avatars/avatar3.png}" alt="img" class="rounded-circle img-fluid">
                                     </div>
                                     <p class="notify-details">
                                         <b>Michael Cox</b>
@@ -160,7 +169,7 @@
                                 <!-- item-->
                                 <a href="#" class="dropdown-item notify-item">
                                     <div class="notify-icon bg-faded">
-                                        <img src="assets/images/avatars/avatar4.png" alt="img" class="rounded-circle img-fluid">
+                                        <img th:src="@{~/assets/images/avatars/avatar4.png}" alt="img" class="rounded-circle img-fluid">
                                     </div>
                                     <p class="notify-details">
                                         <b>Michelle Dolores</b>
@@ -179,7 +188,7 @@
 
                         <li class="list-inline-item dropdown notif">
                             <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                                <img th:src="@{~/assets/images/avatars/admin.png}" alt="Profile image" class="avatar-rounded">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown">
                                 <!-- item-->
@@ -188,7 +197,7 @@
                                 </div>
 
                                 <!-- item-->
-                                <a href="pro-profile.html" class="dropdown-item notify-item">
+                                <a href="#" class="dropdown-item notify-item">
                                     <i class="fa fa-user"></i> <span>Profile</span>
                                 </a>
 
@@ -236,29 +245,25 @@
 
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 信息管理 </span> <span class="menu-arrow"></span></a>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 心理咨询预约服务 </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a th:href="@{/admin/StuList}">用户信息管理</a></li>
-                            <li><a href="#">咨询师信息管理</a></li>
+                            <li><a th:href="@{/consulant/findAllCon}">预约咨询</a></li>
+                            <li><a href="tables-datatable.html">我的预约</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 咨询室管理 </span> </a>
+                        <a th:href="@{/user/doTest}"><i class="fa fa-fw fa-area-chart"></i><span> 心理测评 </span> </a>
                     </li>
                     <li class="submenu">
-                        <a th:href="@{/admin/recordlist}"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
+                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 减压指导 </span> </a>
                     </li>
                     <li class="submenu">
-                        <a href="#" class="active"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
+                        <a href="#" class="active"><i class="fa fa-fw fa-area-chart"></i><span> 活动参与 </span> </a>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 优秀保健员考核 </span> </a>
                     </li>
 
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 活动管理 </span> <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a th:href="@{/admin/actList}">活动列表</a></li>
-                            <li><a th:href="@{/imagetest}">活动发布</a></li>
-                        </ul>
-                    </li>
 
 
                 </ul>
@@ -283,119 +288,90 @@
 			<div class="container-fluid">
 
 					
+							
 				<div class="row">
-					<div class="col-xl-12">
-						<div class="breadcrumb-holder">
-							<h1 class="main-title float-left">Add new page</h1>
-							<ol class="breadcrumb float-right">
-							<li class="breadcrumb-item">Home</li>
-							<li class="breadcrumb-item">Pages</li>
-							<li class="breadcrumb-item active">Add page</li>
-							</ol>
-							<div class="clearfix"></div>
+						<div class="col-xl-12">
+								<div class="breadcrumb-holder">
+										<h1 class="main-title float-left">Data Tables</h1>
+										<ol class="breadcrumb float-right">
+											<li class="breadcrumb-item">Home</li>
+											<li class="breadcrumb-item active">Data Tables</li>
+										</ol>
+										<div class="clearfix"></div>
+								</div>
 						</div>
-					</div>
 				</div>
 				<!-- end row -->
 
-            
-
-			
-				
-				<div class="row">
-							
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">						
-								
-						<div class="card mb-3">
-									
-						<div class="card-body">
-							
-								<form action="/admin/editQue" method="post">
-                                    <input type="hidden" th:value="${testquestion.Testno}" name="Testno">
-								<div class="form-group">
-								<label>问题</label>
-                                    <input class="form-control" name="testQuestion" type="text" th:value="${testquestion.testQuestion}" required>
-								</div>
 
 
-								<div class="form-group">
-								<label>A选项</label>
 
-                                    <textarea required="" th:text="${testquestion.answerA}" class="form-control" name="answerA"></textarea>
-                                    <label>选择A分数:</label>
-                                    <select name="scoreA" class="form-control" required>
-                                        <option value="">--A分数--</option>
-                                        <option  value="0"  th:selected="${testquestion.scoreA} eq 0" >0</option>
-                                        <option  value="1"  th:selected="${testquestion.scoreA} eq 1" >1</option>
-                                        <option value="2"  th:selected="${testquestion.scoreA} eq 2" >2</option>
-                                        <option value="3" th:selected="${testquestion.scoreA} eq 3" >3</option>
-                                        <option value="4" th:selected="${testquestion.scoreA} eq 4" >4</option>
-                                        <option value="5" th:selected="${testquestion.scoreA} eq 5" >5</option>
-                                    </select>
-								</div>
 
-                                    <div class="form-group">
-                                        <label>B选项</label>
-                                        <textarea required="" th:text="${testquestion.answerB}" class="form-control" name="answerB"></textarea>
-                                        <label>选择B分数:</label>
-                                        <select name="scoreB" class="form-control" required>
-                                            <option value="">--B分数--</option>
-                                            <option  value="0"  th:selected="${testquestion.scoreB} eq 0" >0</option>
-                                            <option  value="1"  th:selected="${testquestion.scoreB} eq 1" >1</option>
-                                            <option value="2"  th:selected="${testquestion.scoreB} eq 2" >2</option>
-                                            <option value="3" th:selected="${testquestion.scoreB} eq 3" >3</option>
-                                            <option value="4" th:selected="${testquestion.scoreB} eq 4" >4</option>
-                                            <option value="5" th:selected="${testquestion.scoreB} eq 5" >5</option>
-                                        </select>
-                                    </div>
+                <div class="row">
 
-                                    <div class="form-group">
-                                        <label>C选项</label>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-                                        <textarea required="" th:text="${testquestion.answerC}" class="form-control" name="answerC"></textarea>
-                                        <label>选择C分数</label>
-                                        <select name="scoreC" class="form-control" required>
-                                            <option value="">--C分数--</option>
-                                            <option  value="0"  th:selected="${testquestion.scoreC} eq 0" >0</option>
-                                            <option  value="1"  th:selected="${testquestion.scoreC} eq 1" >1</option>
-                                            <option value="2"  th:selected="${testquestion.scoreC} eq 2" >2</option>
-                                            <option value="3" th:selected="${testquestion.scoreC} eq 3" >3</option>
-                                            <option value="4" th:selected="${testquestion.scoreC} eq 4" >4</option>
-                                            <option value="5" th:selected="${testquestion.scoreC} eq 5" >5</option>
-                                        </select>
-                                    </div>
+                        <div class="card mb-3">
 
-                                    <div class="form-group">
-                                        <label>D选项</label>
-                                        <textarea required="" th:text="${testquestion.answerD}" class="form-control" name="answerD"></textarea>
-                                        <label>选择C分数</label>
-                                        <select name="scoreD" class="form-control" required>
-                                            <option value="">--D分数--</option>
-                                            <option  value="0"  th:selected="${testquestion.scoreD} eq 0" >0</option>
-                                            <option  value="1"  th:selected="${testquestion.scoreD} eq 1" >1</option>
-                                            <option value="2"  th:selected="${testquestion.scoreD} eq 2" >2</option>
-                                            <option value="3" th:selected="${testquestion.scoreD} eq 3" >3</option>
-                                            <option value="4" th:selected="${testquestion.scoreD} eq 4" >4</option>
-                                            <option value="5" th:selected="${testquestion.scoreD} eq 5" >5</option>
-                                        </select>
-                                    </div>
-							    <button type="submit" class="btn btn-primary">保存</button>
+                            <div class="card-header">
+                                <span class="pull-right"><a href="pro-articles-add.html" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add new article</a></span>
+                                <h3><i class="fa fa-file-text-o"></i> 所有活动 </h3>
+                            </div>
+                            <!-- end card-header -->
 
-								
-								</form>
-							
-								</div>	
-								<!-- end card-body -->								
-									
-							</div>
-							<!-- end card -->					
+                            <div class="card-body">
 
-						</div>
-						<!-- end col -->	
-															
-					</div>
-					<!-- end row -->	
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>活动介绍</th>
+                                            <th style="width:160px">目前状态</th>
+                                            <th style="width:100px">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
 
+                                        <tr th:each="Act,ActState:${actList}">
+                                            <td>
+                                                <span th:text="${ActState.count}"></span>
+                                            </td>
+                                            <td>
+                                                <span style="float: left; margin-right:10px;"><img style="width:auto; max-height:140px;" th:src="@{${Act.ActImg}}"></span>
+                                                <h5 th:text="${Act.ActName}"> l</h5>地点: <b th:text="${Act.ActPlace}">地点</b> 时间：<b th:text="${#dates.format(Act.ActTime, 'yyyy-MM-dd')}">时间</b><br>
+                                                <small th:text="${Act.ActNote}">详情</small>
+                                            </td>
+
+                                            <td th:switch="${Act.State}">
+                                                <span th:case="0" th:text="报名截止"></span>
+                                                <span th:case="1" th:text="报名中"></span>
+                                            </td>
+                                            <td >
+                                                <a th:if="${!#lists.contains(hasAct,Act.ActNo)}"
+                                                   role="button" class="btn"  th:href="@{/user/addAtt(ActNo=${Act.ActNo})}"
+                                                   onclick="return attAct()" th:value="${Act.ActNo}">
+                                                    报名参加
+                                                </a>
+                                                <h5 th:if="${#lists.contains(hasAct,Act.ActNo)}" th:text="已报名" > </h5>
+                                            </td>
+<!--                                            ${#lists.contains(list, element)}-->
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+                            <!-- end card-body -->
+
+                        </div>
+                        <!-- end card -->
+
+                    </div>
+                    <!-- end col -->
+
+                </div>
 
 
             </div>
@@ -404,12 +380,68 @@
 		</div>
 		<!-- END content -->
 
+        <div class="modal fade custom-modal" tabindex="-1" role="dialog" aria-hidden="true" id="modal_edit_category_10">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <form action="#" method="post">
+
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit category</h5>
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Category title (required)</label>
+                                        <input class="form-control" name="title" type="text" value="Blog" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Description (optional)</label>
+                                        <textarea class="form-control" name="description" rows="5">Our blog articles</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Active</label>
+                                        <select name="active" class="form-control">
+                                            <option selected="selected" value="1">YES</option>
+                                            <option  value="0">NO</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Edit category</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </div>
 	<!-- END content-page -->
-    
-	<footer class="footer">
+
+    <footer class="footer">
 		<span class="text-right">
-		Copyright &copy; 2019.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+		Copyright &copy; 2019.Company name All rights reserved.<a target="_blank" th:href="@{http://sc.chinaz.com/moban/}">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
 		</span>
 		<span class="float-right">
 		
@@ -435,17 +467,31 @@
 <!-- App js -->
 <script th:src="@{~/assets/js/pikeadmin1.js}"></script>
 
-
 <!-- BEGIN Java Script for this page -->
-<script th:src="@{~/assets/plugins/trumbowyg/trumbowyg.min.js}"></script>
-<script th:src="@{~/assets/plugins/trumbowyg/plugins/upload/trumbowyg.upload.js}"></script>
+	<script th:src="@{https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js}"></script>
+
 <script>
-$(document).ready(function () {
-    'use strict';
-	$('.editor').trumbowyg();	
-}); 
+	// START CODE FOR BASIC DATA TABLE
+	$(document).ready(function() {
+		$('#example1').DataTable();
+	} );
 </script>
+<script type="text/javascript">
+    function attAct(){
+        if (confirm("您确定要报名参加该活动吗？")){
+            alert("报名成功！");
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
+
+
+
 <!-- END Java Script for this page -->
+
 
 </body>
 </html>

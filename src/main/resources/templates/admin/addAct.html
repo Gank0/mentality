@@ -249,14 +249,14 @@
                         <a th:href="@{/admin/recordlist}"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
                     </li>
                     <li class="submenu">
-                        <a href="#" class="active"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
+                        <a th:href="@{/admin/QueList}"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
                     </li>
 
                     <li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> 活动管理 </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a th:href="@{/admin/actList}">活动列表</a></li>
-                            <li><a th:href="@{/imagetest}">活动发布</a></li>
+                            <li><a href="#" class="active">活动发布</a></li>
                         </ul>
                     </li>
 
@@ -309,77 +309,50 @@
 						<div class="card mb-3">
 									
 						<div class="card-body">
-							
-								<form action="/admin/editQue" method="post">
-                                    <input type="hidden" th:value="${testquestion.Testno}" name="Testno">
-								<div class="form-group">
-								<label>问题</label>
-                                    <input class="form-control" name="testQuestion" type="text" th:value="${testquestion.testQuestion}" required>
-								</div>
+                            <div th:if="${filename=='no'}">
+                            <form action="upload" method="post" enctype="multipart/form-data" >
+                                    <div >
+                                        <label>选择封面：</label>
+                                        <input type="file" name="file" accept="image/*" id="imgFile">
+                                    </div>
+                                        <button type="submit" class="btn btn-success">确认照片</button>
+                            </form>
 
+                            </div>
+                            <div id="previewDiv" >
 
-								<div class="form-group">
-								<label>A选项</label>
+                            </div>
 
-                                    <textarea required="" th:text="${testquestion.answerA}" class="form-control" name="answerA"></textarea>
-                                    <label>选择A分数:</label>
-                                    <select name="scoreA" class="form-control" required>
-                                        <option value="">--A分数--</option>
-                                        <option  value="0"  th:selected="${testquestion.scoreA} eq 0" >0</option>
-                                        <option  value="1"  th:selected="${testquestion.scoreA} eq 1" >1</option>
-                                        <option value="2"  th:selected="${testquestion.scoreA} eq 2" >2</option>
-                                        <option value="3" th:selected="${testquestion.scoreA} eq 3" >3</option>
-                                        <option value="4" th:selected="${testquestion.scoreA} eq 4" >4</option>
-                                        <option value="5" th:selected="${testquestion.scoreA} eq 5" >5</option>
-                                    </select>
-								</div>
+                            <div th:if="${filename!='no'}">
+                                <h3>选择的封面为：</h3>
+                                <img th:src="@{${filename}}" th:height="350" th:width="350">
+                            </div>
 
+								<form action="/admin/actOut" method="post">
+
+                                    <input type="hidden" value="0" name="ActNo">
                                     <div class="form-group">
-                                        <label>B选项</label>
-                                        <textarea required="" th:text="${testquestion.answerB}" class="form-control" name="answerB"></textarea>
-                                        <label>选择B分数:</label>
-                                        <select name="scoreB" class="form-control" required>
-                                            <option value="">--B分数--</option>
-                                            <option  value="0"  th:selected="${testquestion.scoreB} eq 0" >0</option>
-                                            <option  value="1"  th:selected="${testquestion.scoreB} eq 1" >1</option>
-                                            <option value="2"  th:selected="${testquestion.scoreB} eq 2" >2</option>
-                                            <option value="3" th:selected="${testquestion.scoreB} eq 3" >3</option>
-                                            <option value="4" th:selected="${testquestion.scoreB} eq 4" >4</option>
-                                            <option value="5" th:selected="${testquestion.scoreB} eq 5" >5</option>
-                                        </select>
+                                        <label>请输入活动名称：</label>
+                                        <input type="text" required=""  class="form-control" name="ActName"></input>
+                                    </div>
+                                    <input type="hidden" name="ActImg" th:value="${filename}">
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                        <label>请输入活动时间：</label>
+                                        <input type="date" required=""  class="form-control" name="ActTime" value="1"></input>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>C选项</label>
-
-                                        <textarea required="" th:text="${testquestion.answerC}" class="form-control" name="answerC"></textarea>
-                                        <label>选择C分数</label>
-                                        <select name="scoreC" class="form-control" required>
-                                            <option value="">--C分数--</option>
-                                            <option  value="0"  th:selected="${testquestion.scoreC} eq 0" >0</option>
-                                            <option  value="1"  th:selected="${testquestion.scoreC} eq 1" >1</option>
-                                            <option value="2"  th:selected="${testquestion.scoreC} eq 2" >2</option>
-                                            <option value="3" th:selected="${testquestion.scoreC} eq 3" >3</option>
-                                            <option value="4" th:selected="${testquestion.scoreC} eq 4" >4</option>
-                                            <option value="5" th:selected="${testquestion.scoreC} eq 5" >5</option>
-                                        </select>
+                                        <label>请输入活动地点：</label>
+                                        <input type="text" required=""  class="form-control" name="ActPlace"></input>
                                     </div>
-
                                     <div class="form-group">
-                                        <label>D选项</label>
-                                        <textarea required="" th:text="${testquestion.answerD}" class="form-control" name="answerD"></textarea>
-                                        <label>选择C分数</label>
-                                        <select name="scoreD" class="form-control" required>
-                                            <option value="">--D分数--</option>
-                                            <option  value="0"  th:selected="${testquestion.scoreD} eq 0" >0</option>
-                                            <option  value="1"  th:selected="${testquestion.scoreD} eq 1" >1</option>
-                                            <option value="2"  th:selected="${testquestion.scoreD} eq 2" >2</option>
-                                            <option value="3" th:selected="${testquestion.scoreD} eq 3" >3</option>
-                                            <option value="4" th:selected="${testquestion.scoreD} eq 4" >4</option>
-                                            <option value="5" th:selected="${testquestion.scoreD} eq 5" >5</option>
-                                        </select>
+                                        <label>请输入活动简介：</label>
+                                        <textarea  required=""  class="form-control" name="ActNote"></textarea>
                                     </div>
-							    <button type="submit" class="btn btn-primary">保存</button>
+                                    <p style="font-family:verdana;color:red" th:if="${filename=='no'}">
+                                        请先选择封面后再提交！
+                                    </p>
+							    <button type="submit" class="btn btn-primary" th:if="${filename!='no'}">发布</button>
 
 								
 								</form>
@@ -445,6 +418,54 @@ $(document).ready(function () {
 	$('.editor').trumbowyg();	
 }); 
 </script>
+<script>
+    $(function(){
+        $('#imgFile').change(function(e){doPreview(this);})
+    });
+
+
+    function doPreview(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var file = input.files[0];
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                var img = new Image();
+                img.src = this.result;
+
+                img.onload = function(){
+                    var w = this.width,
+                        h = this.height,
+                        t = file.type,
+                        n = file.name,
+                        s = ~~(file.size/1024) +'KB';
+                    $('#previewDiv').append('<span>预览效果：</span> <img src="' + this.src +'" name="ActImg" height="200" width="200"> <br>');
+                }
+
+            };
+
+        }else{
+            var previewDiv = document.getElementById("previewDiv");
+            previewDiv.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = input.value;
+
+            //previewDiv.innerHTML = '<img src="'+input.value+'" />'
+            //document.getElementById('previewImg').src = input.value;
+
+            var img = new Image();
+            img.src = input.value;
+          //  previewDiv.style.width = img.width;
+         //   previewDiv.style.height = img.height;
+            previewDiv.style.width = 100;
+            previewDiv.style.height = 100;
+          //  alert('width:'+img.width+'; height:'+img.height);
+
+        }
+
+    }
+</script>
+
+
 <!-- END Java Script for this page -->
 
 </body>

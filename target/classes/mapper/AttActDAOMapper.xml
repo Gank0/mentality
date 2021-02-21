@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.mentality.dao.AttActDAO">
+
+
+
+    <insert id="AddAttAct" parameterType="com.bishe.mentality.entity.AttenActivity">
+        insert  into t_attenActivity values(#{s_no},#{ActNo},#{Note})
+    </insert>
+
+    <select id="FindAttBysno" resultType="com.bishe.mentality.entity.AttenActivity">
+        select s_no,ActNo,Note from t_attenActivity WHERE s_no=#{s_no}
+    </select>
+
+
+</mapper>

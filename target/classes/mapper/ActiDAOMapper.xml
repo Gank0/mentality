@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.mentality.dao.ActDAO">
+
+
+
+    <insert id="addAct" parameterType="com.bishe.mentality.entity.Activity">
+        insert  into t_activity values(#{ActNo},#{ActName},#{ActImg},#{ActTime},#{ActPlace},#{ActNote},#{State} )
+    </insert>
+
+<!--    查询所有题目-->
+    <select id="allAct" resultType="com.bishe.mentality.entity.Activity">
+        select ActNo,ActName,ActImg,ActTime,ActPlace,ActNote,State from t_activity
+    </select>
+
+    <update id="editStateByNo" parameterType="String">
+        update t_activity set State=case when State='0' then '1' else '0' end WHERE ActNo=#{ActNo}
+    </update>
+
+</mapper>

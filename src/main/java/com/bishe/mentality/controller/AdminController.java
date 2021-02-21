@@ -1,11 +1,8 @@
 package com.bishe.mentality.controller;
 
 import com.bishe.mentality.entity.*;
-import com.bishe.mentality.service.AdminService;
+import com.bishe.mentality.service.*;
 
-import com.bishe.mentality.service.RecordService;
-import com.bishe.mentality.service.StuService;
-import com.bishe.mentality.service.TestqService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +29,9 @@ public class AdminController {
 
     @Autowired
     private RecordService recordService;
+
+    @Autowired
+    private ActService actService;
 
     @GetMapping("/findAllAdmin")
     public String findall(Model model, HttpSession httpSession){
@@ -127,5 +127,21 @@ public class AdminController {
         ans.add(record.getAnswer5());
         model.addAttribute("ans",ans);
         return "admin/detailTest";
+    }
+    @PostMapping("/actOut")
+    public String actOut(Activity activity){
+        actService.addAct(activity);
+        return "redirect:/admin/actList";
+    }
+    @GetMapping("/actList")
+    public String actList(Model model){
+        model.addAttribute("actList",actService.allAct());
+        return "admin/actList";
+    }
+    @GetMapping("/editActState")
+    public String editActState(String ActNo){
+
+        actService.editStateByNo(ActNo);
+        return "redirect:/admin/actList";
     }
 }

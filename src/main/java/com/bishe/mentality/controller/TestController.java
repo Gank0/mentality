@@ -1,5 +1,6 @@
 package com.bishe.mentality.controller;
 
+import com.bishe.mentality.entity.Activity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,11 +27,11 @@ public class TestController {
 
     // 执行上传
     @RequestMapping("upload")
-    public String upload(@RequestParam("file") MultipartFile file, Model model) {
+    public String upload(@RequestParam("file") MultipartFile file,Model model) {
         // 获取上传文件名
         String filename = file.getOriginalFilename();
         // 定义上传文件保存路径
-        String path = filePath+"rotPhoto/";
+        String path = filePath+"actPhoto/";
         // 新建文件
         File filepath = new File(path, filename);
         // 判断路径是否存在，如果不存在就创建一个
@@ -44,13 +45,16 @@ public class TestController {
             e.printStackTrace();
         }
         // 将src路径发送至html页面
-        model.addAttribute("filename", "~/assets/images/rotPhoto/"+filename);
-        return "imagetest";
+        model.addAttribute("filename", "~/assets/images/actPhoto/"+filename);
+        return "admin/addAct";
     }
 
+
+
     @GetMapping("imagetest")
-    public String imgtest(){
-        return "imagetest";
+    public String imgtes1t(Model model){
+        model.addAttribute("filename", "no");
+        return "admin/addAct";
     }
 
 }

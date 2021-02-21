@@ -8,15 +8,6 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class IndextController {
-    @GetMapping("/rili")
-    public String toidex(){
-        return "user/index2";
-    }
-
-    @GetMapping("/rili1")
-    public String toidex1(){
-        return "index22";
-    }
 
     @GetMapping("/index")
     public String toindex(){

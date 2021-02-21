@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +28,10 @@ public class StuController {
     private TestqService testqService;
     @Autowired
     private RecordService recordService;
+    @Autowired
+    private AttActService attActService;
+    @Autowired
+    private ActService actService;
 
     @PostMapping("/register")
     public String register(Student student){
@@ -88,13 +93,6 @@ public class StuController {
         return "redirect:/admin/StuList";
     }
 
-//    @GetMapping("doTest")
-//    public String doTest(Model model,HttpSession httpSession){
-//        List<Testquestion> questiongs=testqService.randomSelect();
-//        model.addAttribute("qs",questiongs);
-//        model.addAttribute("username",httpSession.getAttribute("uid"));
-//        return "user/doTest";
-//    }
 
     @GetMapping("doTest")
     public String doTest(Model model,HttpSession httpSession){
@@ -150,6 +148,39 @@ public class StuController {
         recordService.saveRecord(records);
         return "user/index";
 
+    }
+
+    @GetMapping("/stuactList")
+    public String actList(Model model,HttpSession httpSession){
+        httpSession.setAttribute("uid","123");
+        String id=httpSession.getAttribute("uid").toString();
+        List<AttenActivity> attens= attActService.FindAttBysno(id);
+        if(attens.size()==0){
+            model.addAttribute("hasAct","no");
+        }else{
+            List<String> atts=new ArrayList<>();
+            for(int i=0;i<attens.size();i++){
+                int a=attens.get(i).getActNo();
+                String b=a+"";
+                atts.add(b);
+            }
+            model.addAttribute("hasAct",atts);
+        }
+        model.addAttribute("actList",actService.allAct());
+        return "user/stuactList";
+    }
+
+    @GetMapping("/addAtt")
+    public String addAtt(int ActNo,HttpSession httpSession){
+
+        String s_no=httpSession.getAttribute("uid").toString();
+        AttenActivity attenActivity=new AttenActivity();
+        attenActivity.setActNo(ActNo);
+        attenActivity.setS_no(s_no);
+        System.out.println("123");
+        System.out.println(attenActivity.toString());
+        attActService.AddAttAct(attenActivity);
+        return "redirect:/user/stuactList";
     }
 
 }
