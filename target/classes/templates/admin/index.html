@@ -237,14 +237,20 @@
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> 信息管理 </span> <span class="menu-arrow"></span></a>
 							<ul class="list-unstyled">
 								<li><a th:href="@{/admin/StuList}">用户信息管理</a></li>
-								<li><a href="#">咨询师信息管理</a></li>
+								<li><a th:href="@{/admin/ConList}">咨询师信息管理</a></li>
 							</ul>
                     </li>
+				<li class="submenu">
+					<a href="#"><i class="fa fa-fw fa-table"></i> <span> 学生测评信息 </span> <span class="menu-arrow"></span></a>
+					<ul class="list-unstyled">
+						<li class="submenu">
+							<a th:href="@{/admin/recordlist}"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
+						</li>
+						<li><a th:href="@{/admin/tolowscore}">问题学生信息</a></li>
+					</ul>
+				</li>
 					<li class="submenu">
 						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 咨询室管理 </span> </a>
-					</li>
-					<li class="submenu">
-						<a th:href="@{/admin/recordlist}"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
 					</li>
 					<li class="submenu">
 						<a th:href="@{/admin/QueList}"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
@@ -253,105 +259,13 @@
 				<li class="submenu">
 					<a href="#"><i class="fa fa-fw fa-table"></i> <span> 活动管理 </span> <span class="menu-arrow"></span></a>
 					<ul class="list-unstyled">
-						<li><a href="#">活动列表</a></li>
-						<li><a href="#">活动发布</a></li>
+						<li><a th:href="@{/admin/actList}">活动列表</a></li>
+						<li><a th:href="@{/imagetest}">活动发布</a></li>
 					</ul>
 				</li>
-
-										
-<!--                    <li class="submenu">-->
-<!--                        <a href="#"><i class="fa fa-fw fa-tv"></i> <span> User Interface </span> <span class="menu-arrow"></span></a>-->
-<!--                            <ul class="list-unstyled">-->
-<!--                                <li><a href="#">Alerts</a></li>-->
-<!--                                <li><a href="#">Buttons</a></li>-->
-<!--                                <li><a href="#">Cards</a></li>-->
-<!--                                <li><a href="#">Carousel</a></li>-->
-<!--&lt;!&ndash;                                <li><a href="ui-collapse.html">Collapse</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <li><a href="ui-icons.html">Icons</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <li><a href="ui-modals.html">Modals</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <li><a href="ui-tooltips.html">Tooltips and Popovers</a></li>&ndash;&gt;-->
-<!--                            </ul>-->
-<!--                    </li>-->
-
-<!--					<li class="submenu">-->
-<!--                        <a href="#"><i class="fa fa-fw fa-file-text-o"></i> <span> Forms </span> <span class="menu-arrow"></span></a>-->
-<!--                            <ul class="list-unstyled">-->
-<!--                                <li><a href="#">General Elements</a></li>-->
-<!--								<li><a href="#">Select2</a></li>-->
-<!--                                <li><a href="#">Form Validation</a></li>-->
-<!--&lt;!&ndash;                                <li><a href="forms-text-editor.html">Text Editors</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="forms-upload.html">Multiple File Upload</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="forms-datetime-picker.html">Date and Time Picker</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="forms-color-picker.html">Color Picker</a></li>&ndash;&gt;-->
-<!--                            </ul>-->
-<!--                    </li>-->
-<!--					-->
-<!--                    <li class="submenu">-->
-<!--						<a href="#"><i class="fa fa-fw fa-th"></i> <span> Plugins </span> <span class="menu-arrow"></span></a>-->
-<!--                            <ul class="list-unstyled">-->
-<!--                                <li><a href="#">Star Rating</a></li>-->
-<!--								<li><a href="#">Range Sliders</a></li>-->
-<!--&lt;!&ndash;								<li><a href="tree-view.html">Tree View</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="sweetalert.html">SweetAlert</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="calendar.html">Calendar</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="gmaps.html">GMaps</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="counter-up.html">Counter-Up</a></li>&ndash;&gt;-->
-<!--                            </ul>-->
-<!--                    </li>-->
-
-<!--					<li class="submenu">-->
-<!--                        <a href="#"><i class="fa fa-fw fa-image"></i> <span> Images and Galleries </span> <span class="menu-arrow"></span></a>-->
-<!--							<ul class="list-unstyled">-->
-<!--								<li><a href="#"><span class="label radius-circle bg-danger float-right">cool</span> Fancybox </a></li>-->
-<!--								<li><a href="#">Masonry</a></li>-->
-<!--&lt;!&ndash;								<li><a href="media-lightbox.html">Lightbox</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="media-owl-carousel.html">Owl Carousel</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="media-image-magnifier.html">Image Magnifier</a></li>&ndash;&gt;-->
-<!--								-->
-<!--							</ul>-->
-<!--                    </li>-->
-<!--					-->
-<!--                    <li class="submenu">-->
-<!--                        <a href="#"><span class="label radius-circle bg-danger float-right">20</span><i class="fa fa-fw fa-copy"></i><span> Example Pages </span></a>-->
-<!--                            <ul class="list-unstyled">								-->
-<!--                                <li><a href="#">Pricing Tables</a></li>-->
-<!--                                <li><a target="_blank" href="#">Countdown</a></li>-->
-<!--&lt;!&ndash;                                <li><a href="page-invoice.html">Invoice</a></li>                        &ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="page-login.html">Login / Register</a></li>								&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="page-blank.html">Blank Page</a></li>&ndash;&gt;-->
-<!--                            </ul>-->
-<!--                    </li>-->
-
-<!--					<li class="submenu">-->
-<!--                        <a href="#"><span class="label radius-circle bg-primary float-right">9</span><i class="fa fa-fw fa-indent"></i><span> Menu Levels </span></a>-->
-<!--                            <ul>-->
-<!--								<li>-->
-<!--                                    <a href="#"><span>Second Level</span></a>-->
-<!--                                </li>-->
-<!--                                <li class="submenu">-->
-<!--                                    <a href="#"><span>Third Level</span> <span class="menu-arrow"></span> </a>-->
-<!--                                        <ul style="">-->
-<!--                                            <li><a href="#"><span>Third Level Item</span></a></li>-->
-<!--                                            <li><a href="#"><span>Third Level Item</span></a></li>-->
-<!--                                        </ul>-->
-<!--                                </li>                                -->
-<!--                            </ul>-->
-<!--                    </li>-->
-
-<!--					<li class="submenu">-->
-<!--                        <a class="pro" href="#"><i class="fa fa-fw fa-star"></i><span> Pike Admin PRO </span> <span class="menu-arrow"></span></a>-->
-<!--                            <ul class="list-unstyled">								-->
-<!--                                <li><a target="_blank" href="#">Admin PRO features</a></li>-->
-<!--&lt;!&ndash;								<li><a href="pro-settings.html">Settings</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="pro-profile.html">My Profile</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <li><a href="pro-users.html">Users</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <li><a href="pro-articles.html">Articles</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <li><a href="pro-categories.html">Categories</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="pro-pages.html">Pages</a></li>								&ndash;&gt;-->
-<!--&lt;!&ndash;                                <li><a href="pro-contact-messages.html">Contact Messages</a></li>&ndash;&gt;-->
-<!--&lt;!&ndash;								<li><a href="pro-slider.html">Slider</a></li>&ndash;&gt;-->
-<!--                            </ul>-->
-<!--                    </li>-->
+				<li class="submenu">
+					<a th:href="@{/admin/leaveManage}"><i class="fa fa-fw fa-area-chart"></i><span> 请假请求 </span> </a>
+				</li>
 					
             </ul>
 

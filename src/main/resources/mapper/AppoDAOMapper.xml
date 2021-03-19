@@ -28,4 +28,7 @@
         update t_appointment set appRoom=#{appRoom},state=#{state},note=#{note} where appointNo=#{appointNo}
     </update>
 
+    <select id="findConBetweenDate" resultType="com.bishe.mentality.entity.Appointment">
+        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,appRoom,score,state,important,note from t_appointment where appTime &gt;= #{startDate} and appTime &lt;=DATE_SUB(#{endDate},INTERVAL -1 DAY) and c_id=#{cid}
+    </select>
 </mapper>

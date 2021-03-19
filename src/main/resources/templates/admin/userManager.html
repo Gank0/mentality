@@ -247,8 +247,8 @@
                     <li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> 信息管理 </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a th:href="@{/admin/StuList}" class="active">用户信息管理</a></li>
-                            <li><a href="#">咨询师信息管理</a></li>
+                            <li ><a href="#" class="active">用户信息管理</a></li>
+                            <li><a th:href="@{/admin/ConList}">咨询师信息管理</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
@@ -362,7 +362,6 @@
                                                     <span th:case="2" th:text="保健员"></span>
                                                 </td>
                                                 <td>
-                                                    <a role="button" class="btn btn-danger"  th:onclick="'javascript:del()'">删除</a>
                                                     <a role="button" class="btn btn-danger"  th:href="@{/user/deleteUser(s_no=${stu.s_no})}"
                                                        onclick="return del()" th:value="${stu.s_no}">
                                                         删除

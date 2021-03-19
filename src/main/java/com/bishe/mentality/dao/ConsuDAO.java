@@ -11,4 +11,8 @@ public interface ConsuDAO {
     List<Consultant> findAllCon();
     Consultant findCon(String id);
     List<Date> busyDay(String c_id);
+    void editCon(Consultant consultant);
+    void deleteCon(String id);
+
+
 }

@@ -23,13 +23,15 @@
     </select>
     <!--    根据id修改信息-->
     <update id="editCon" parameterType="com.bishe.mentality.entity.Consultant">
-        update t_consultant set name=#{name},password=#{password},gender=#{gender},introduction=#{introduction},
-        imgSr=#{imgSr} where id=#{id}
+        update t_consultant set password=#{password},gender=#{gender},introduction=#{introduction} where id=#{id}
     </update>
     
     <select id="busyDay" parameterType="String" resultType="java.util.Date">
         select DATE_FORMAT(apptime,'%Y-%m-%d') as busyTime from t_appointment where c_id=#{c_id}  UNION select DATE_FORMAT(leavetime,'%Y-%m-%d') as busyTime from t_conLeave where c_id=#{id}
     </select>
+
+
+
 
 
 </mapper>

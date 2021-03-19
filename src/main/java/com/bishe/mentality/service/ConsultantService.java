@@ -10,5 +10,6 @@ public interface ConsultantService {
     List<Consultant> findAllCon();
     Consultant findCon(String id);
     List<Date> busyDay(String id);
-
+    void editCon(Consultant consultant);
+    void deleteCon(String id);
 }

@@ -3,6 +3,7 @@ package com.bishe.mentality.service;
 import com.bishe.mentality.entity.Appointment;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -13,4 +14,5 @@ public interface AppoService {
     List<Appointment> findAllAppo();
     Appointment findAppoByno(String no);
     void updateAppo(Appointment appointment);
+    List<Appointment> findConBetweenDate(Date startDate, Date endDate,String cid);
 }

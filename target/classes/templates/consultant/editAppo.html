@@ -235,25 +235,19 @@
 
 
 
+
+
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 信息管理 </span> <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li class="active"><a href="#">用户信息管理</a></li>
-                            <li><a href="#l">咨询师信息管理</a></li>
-                        </ul>
+                        <a class="active" th:href="@{/consulant/findAppoBycid}"><i class="fa fa-fw fa-area-chart"></i><span> 预约记录与处理 </span> </a>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 请假调休 </span> </a>
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 咨询室管理 </span> </a>
+                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 个人资料 </span> </a>
                     </li>
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
-                    </li>
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
-                    </li>
-                    <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 活动发布 </span> </a>
-                    </li>
+
 
 
                 </ul>
@@ -349,7 +343,8 @@
 								<input hidden="hidden" name="appointNo" th:value="${appoint.appointNo}">
 								<div class="form-group">
 								<label>预约时间</label>
-                                    <span th:text="${appoint.appTime}"></span>
+
+                                    <span th:text="${#dates.format(appoint.appTime, 'yyyy-MM-dd')}"></span>
 
 								</div>
                                     <input type="date" hidden="hidden" th:value="${appoint.appTime}" name="appTime">
@@ -368,6 +363,7 @@
                                             <option  value="0"  th:selected="${appoint.state} eq 0" >待确认</option>
                                             <option value="1"  th:selected="${appoint.state} eq 1" >已确认</option>
                                             <option value="2" th:selected="${appoint.state} eq 2" >延期</option>
+                                            <option value="3" th:selected="${appoint.state} eq 3" >已完成</option>
                                         </select>
                                     </div>
 

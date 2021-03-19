@@ -244,25 +244,30 @@
 
 
 
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-table"></i> <span> 信息管理 </span> <span class="menu-arrow"></span></a>
-						<ul class="list-unstyled">
-							<li><a href="#">用户信息管理</a></li>
-							<li><a href="#l">咨询师信息管理</a></li>
-						</ul>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 咨询室管理 </span> </a>
-					</li>
-					<li class="active">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 活动发布 </span> </a>
-					</li>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 信息管理 </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a th:href="@{/admin/StuList}" class="active">用户信息管理</a></li>
+                            <li><a href="#">咨询师信息管理</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 咨询室管理 </span> </a>
+                    </li>
+                    <li class="submenu">
+                        <a href="#" class="active"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
+                    </li>
+                    <li class="submenu">
+                        <a th:href="@{/admin/QueList}"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 活动管理 </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a th:href="@{/admin/actList}">活动列表</a></li>
+                            <li><a th:href="@{/imagetest}">活动发布</a></li>
+                        </ul>
+                    </li>
 
 
 				</ul>

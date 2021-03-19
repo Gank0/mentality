@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.mentality.dao.LeaveDAO">
+
+
+    <insert id="addLeave" parameterType="com.bishe.mentality.entity.Leave">
+        insert  into t_leave values(#{leaveNo},#{id},#{leaveStartTime},#{leaveEndTime},#{leaveType},#{leaveReason},#{state})
+    </insert>
+
+    <update id="editLeave" parameterType="com.bishe.mentality.entity.Leave">
+        update t_leave set state=#{state} where leaveNo=#{leaveNo}
+    </update>
+
+    <select id="findAllLeave" resultType="com.bishe.mentality.entity.Leave">
+        select leaveNo,id,leaveStartTime,leaveEndTime,leaveType,leaveReason,state from t_leave
+    </select>
+    <select id="findLeaveByid" resultType="com.bishe.mentality.entity.Leave">
+        select leaveNo,id,leaveStartTime,leaveEndTime,leaveType,leaveReason,state from t_leave WHERE id=#{id}
+    </select>
+
+    <select id="findLeaveByNo" resultType="com.bishe.mentality.entity.Leave">
+        select leaveNo,id,leaveStartTime,leaveEndTime,leaveType,leaveReason,state from t_leave WHERE leaveNo=#{leaveNo}
+    </select>
+
+</mapper>
+

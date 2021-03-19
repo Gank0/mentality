@@ -230,52 +230,46 @@
 	
  
 	<!-- Left Sidebar -->
-	<div class="left main-sidebar">
+    <div class="left main-sidebar">
 
-		<div class="sidebar-inner leftscroll">
+        <div class="sidebar-inner leftscroll">
 
-			<div id="sidebar-menu">
+            <div id="sidebar-menu">
 
-				<ul>
+                <ul>
 
-					<li class="submenu">
-						<a class="active" href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
-					</li>
-
-
-
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-table"></i> <span> 信息管理 </span> <span class="menu-arrow"></span></a>
-						<ul class="list-unstyled">
-							<li class="active"><a href="#">用户信息管理</a></li>
-							<li><a href="#l">咨询师信息管理</a></li>
-						</ul>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 咨询室管理 </span> </a>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 活动发布 </span> </a>
-					</li>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                    </li>
 
 
-				</ul>
 
-				<div class="clearfix"></div>
 
-			</div>
 
-			<div class="clearfix"></div>
+                    <li class="submenu">
+                        <a class="active" th:href="@{/consulant/findAppoBycid}"><i class="fa fa-fw fa-area-chart"></i><span> 预约记录与处理 </span> </a>
+                    </li>
 
-		</div>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 请假调休 </span> </a>
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 个人资料 </span> </a>
+                    </li>
 
-	</div>
+
+
+                </ul>
+
+                <div class="clearfix"></div>
+
+            </div>
+
+            <div class="clearfix"></div>
+
+        </div>
+
+    </div>
 	<!-- End Sidebar -->
 
 
@@ -359,6 +353,7 @@
                                             </tr>
 										</tbody>
 									</table>
+
 									</div>
 									
 								</div>														

@@ -8,4 +8,5 @@ import java.util.List;
 public interface AttActDAO {
     void AddAttAct(AttenActivity attenActivity);
     List<AttenActivity> FindAttBysno(@Param("s_no")String s_no);
+
 }

@@ -13,4 +13,7 @@
         select s_no,Testno1,answer1,Testno2,answer2,Testno3,answer3,Testno4,answer4,Testno5,answer5,score from t_record where s_no=#{s_no}
     </select>
 
+    <select id="lowRecord" parameterType="int" resultType="com.bishe.mentality.entity.Record">
+        select s_no,score from t_record where score &lt; #{score}
+    </select>
 </mapper>

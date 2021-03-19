@@ -5,6 +5,7 @@ import com.bishe.mentality.entity.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -44,5 +45,10 @@ public class AppoServiceImpl implements AppoService{
     @Override
     public void updateAppo(Appointment appointment) {
         appoDAO.updateAppo(appointment);
+    }
+
+    @Override
+    public List<Appointment> findConBetweenDate(Date startDate, Date endDate,String cid) {
+        return appoDAO.findConBetweenDate(startDate,endDate,cid);
     }
 }

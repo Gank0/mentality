@@ -32,6 +32,8 @@ public class StuController {
     private AttActService attActService;
     @Autowired
     private ActService actService;
+    @Autowired
+    private AppoService appoService;
 
     @PostMapping("/register")
     public String register(Student student){
@@ -152,7 +154,7 @@ public class StuController {
 
     @GetMapping("/stuactList")
     public String actList(Model model,HttpSession httpSession){
-        httpSession.setAttribute("uid","123");
+      //  httpSession.setAttribute("uid","123");
         String id=httpSession.getAttribute("uid").toString();
         List<AttenActivity> attens= attActService.FindAttBysno(id);
         if(attens.size()==0){
@@ -183,4 +185,13 @@ public class StuController {
         return "redirect:/user/stuactList";
     }
 
+    @GetMapping("/findAppoByno")
+    public String findAppoByno(Model model,HttpSession httpSession){
+      //  String id=httpSession.getAttribute("uid").toString();
+        String id="123";
+        List<Appointment> appos=appoService.findAppoBysno(id);
+        model.addAttribute("appos",appos);
+        System.out.println(appos);
+        return "user/myAppoList";
+    }
 }

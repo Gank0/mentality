@@ -231,21 +231,25 @@
                     </li>
 
 
-					
 
 
-					<li class="submenu">
-						<a th:href="@{/consulant/findAppoBycid}"><i class="fa fa-fw fa-area-chart"></i><span> 预约处理 </span> </a>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 咨询记录 </span> </a>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 请假调休 </span> </a>
-					</li>
-					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 个人资料 </span> </a>
-					</li>
+
+				<li class="submenu">
+					<a th:href="@{/consulant/findAppoBycid}"><i class="fa fa-fw fa-area-chart"></i><span> 预约记录与处理 </span> </a>
+				</li>
+
+
+				<li class="submenu">
+					<a href="#"><i class="fa fa-fw fa-table"></i> <span> 请假调休 </span> <span class="menu-arrow"></span></a>
+					<ul class="list-unstyled">
+						<li><a th:href="@{/consulant/leave}">请假申请</a></li>
+						<li><a th:href="@{/consulant/findLeaveByid}">我的调休信息</a></li>
+					</ul>
+				</li>
+
+				<li class="submenu">
+					<a th:href="@{/consulant/editInfo}"><i class="fa fa-fw fa-area-chart"></i><span> 个人资料 </span> </a>
+				</li>
 
 
 					

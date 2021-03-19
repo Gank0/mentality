@@ -12,7 +12,8 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ConsultantServiceImpl implements ConsultantService{
+public class ConsultantServiceImpl implements ConsultantService {
+
 
     @Autowired
     ConsuDAO consuDAO;
@@ -20,7 +21,7 @@ public class ConsultantServiceImpl implements ConsultantService{
     @Override
     @Transactional(propagation = Propagation.SUPPORTS)
     public Consultant loginCon(String id, String password) {
-        Consultant consultant=consuDAO.conlogin(id,password);
+        Consultant consultant = consuDAO.conlogin(id, password);
         return consultant;
     }
 
@@ -38,4 +39,15 @@ public class ConsultantServiceImpl implements ConsultantService{
     public List<Date> busyDay(String id) {
         return consuDAO.busyDay(id);
     }
+
+    @Override
+    public void editCon(Consultant consultant) {
+        consuDAO.editCon(consultant);
+    }
+
+    @Override
+    public void deleteCon(String id) {
+        consuDAO.deleteCon(id);
+    }
+
 }
