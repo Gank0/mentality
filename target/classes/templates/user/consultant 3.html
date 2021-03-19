@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul th:each="day:${busyDay}">
+    <li name="busytime" th:text="${#dates.format(day,'yyyy-MM-dd')}">忙</li>
+</ul>
+<form th:action="@{/consulant/creatApp}" method="post">
+    <input type="hidden" value="0" name="appointNo">
+    <input type="hidden" th:value="${uid}" name="s_no">
+    <input type="hidden" th:value="${con.id}" name="c_id">
+    <span th:text="${con.name}">咨询师名字</span>
+    <span >请选择预约时间:</span>
+    <input type="date" name="appTime" id="apTime" th:min="${startday}" th:max="${endday}"  required>
+    <span >请选择优先级:</span>
+    <select name="important" required>
+        <option value ="0">优先预约</option>
+        <option value ="1">普通预约</option>
+    </select>
+    <input type="hidden" value="0" name="appRoom">
+    <input type="hidden" value="0" name="score">
+    <input type="hidden" value="0" name="state">
+    <input type="hidden" value="0" name="note">
+    <button type="submit">提交</button>
+</form>
+
+
+</body>
+
+</html>
