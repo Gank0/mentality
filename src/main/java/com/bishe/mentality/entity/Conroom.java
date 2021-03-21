@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class Conroom {
     private String roomName;
-    private int State;
+    private int roomState;
     private String roomdescribe;//描述
 
 

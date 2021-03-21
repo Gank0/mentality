@@ -40,6 +40,8 @@ public class AdminController {
     private ConsultantService consultantService;
     @Autowired
     private LeaveService leaveService;
+    @Autowired
+    private RoomService roomService;
 
     @GetMapping("/findAllAdmin")
     public String findall(Model model, HttpSession httpSession){
@@ -220,6 +222,37 @@ public class AdminController {
         }
 
         return "admin/lowStuDetail";
+    }
+
+    //咨询室
+    @GetMapping("/findAllRoom")
+    public String findAllRoom(Model model){
+       List<Conroom> rooms= roomService.findAllRoom();
+       model.addAttribute("rooms",rooms);
+       return "admin/roomList";
+    }
+
+    @GetMapping("/findRoomByName")
+    public String findRoomByName(String roomName,Model model){
+        Conroom roominfo=roomService.findRoomByName(roomName);
+        model.addAttribute("roomInfo",roominfo);
+        return "admin/editRoom";
+    }
+
+    @PostMapping("/saveEditRoom")
+    public String saveeditRoom(Conroom room){
+        roomService.updateRoom(room);
+        return "redirect:/admin/findAllRoom";
+    }
+    @GetMapping("/deleteRoom")
+    public String deleteRoom(String roomName,Model model){
+        roomService.deleteRoom(roomName);
+        return "redirect:/admin/findAllRoom";
+    }
+    @PostMapping("/addRoom")
+    public String addRoom(Conroom conroom){
+        roomService.addRoom(conroom);
+        return "redirect:/admin/findAllRoom";
     }
 
 }

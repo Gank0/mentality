@@ -8,5 +8,18 @@
         select roomName,roomState,roomdescribe from t_room
     </select>
 
+    <update id="updateRoom" parameterType="com.bishe.mentality.entity.Conroom">
+        update t_room set roomState=#{roomState},roomdescribe=#{roomdescribe} where roomName=#{roomName}
+    </update>
+    <delete id="deleteRoom" parameterType="String">
+        delete from t_room where roomName=#{roomName}
+    </delete>
+    <select id="findRoomByName" resultType="com.bishe.mentality.entity.Conroom">
+        select roomName,roomState,roomdescribe from t_room where roomName=#{roomName}
+    </select>
+    <insert id="addRoom" parameterType="com.bishe.mentality.entity.Conroom">
+        insert into t_room values(#{roomName},#{roomState},#{roomdescribe})
+    </insert>
+
 
 </mapper>

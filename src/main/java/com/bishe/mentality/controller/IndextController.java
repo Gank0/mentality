@@ -50,7 +50,10 @@ public class IndextController {
 
     @GetMapping("/admin/queadd")
     public String addQue(){
-        System.out.println("11");
         return "admin/addQues";
+    }
+    @GetMapping("/admin/Roomadd")
+    public String roomadd(){
+        return "admin/addRoom";
     }
 }
