@@ -13,5 +13,5 @@ public interface StuService {
     void deleteStu(String s_no);
     Student findStu(String s_no);
     void editStu(Student student);
-
+    List<Student> ALLbjy();
 }

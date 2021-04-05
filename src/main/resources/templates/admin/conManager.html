@@ -21,7 +21,7 @@
 
 		<!-- Custom CSS -->
 		<link th:href="@{~/assets/css/style1.css}" rel="stylesheet" type="text/css" />
-		
+		<link th:href="@{~/assets/css/tablestyle.css}" rel="stylesheet">
 		<!-- BEGIN CSS for this page -->
 		<link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css}"/>
 		<style>
@@ -239,7 +239,7 @@
 				<ul>
 
 					<li class="submenu">
-						<a class="active" href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+						<a href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
 					</li>
 
 
@@ -312,7 +312,7 @@
 
 				
 				<div class="row">
-				
+
 
 							<div class="card mb-3">
 								<div class="card-header">
@@ -342,7 +342,7 @@
                                                     <span th:text="${conState.count}"></span>
                                                 </td>
                                                 <td>
-                                                    <img th:src="@{${con.imgSrc}}"></img>
+                                                    <img th:src="@{${con.imgSrc}}" height="200px"/>
                                                 </td>
                                                 <td>
                                                     <span th:text="${con.id}"></span>

@@ -14,5 +14,6 @@ public interface StuDAO {
     void deleteStu(@Param("s_no") String s_no);
     Student findStu(@Param("s_no") String s_no);
     void editStu(Student student);
+    List<Student> ALLbjy();
 
 }

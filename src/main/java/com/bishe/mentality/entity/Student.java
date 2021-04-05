@@ -14,7 +14,7 @@ public class Student {
     private String s_password;
     private int s_gender; //男0 女1
     private String s_college;
-    private String s_grade;
+    private String s_grade;//年级
     private int hygienist;//保健员0 非保健员1
 
     public String getS_no() {

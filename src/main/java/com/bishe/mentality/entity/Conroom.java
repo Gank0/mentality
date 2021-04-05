@@ -14,5 +14,27 @@ public class Conroom {
     private int roomState;
     private String roomdescribe;//描述
 
+    public String getRoomName() {
+        return roomName;
+    }
 
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public int getRoomState() {
+        return roomState;
+    }
+
+    public void setRoomState(int roomState) {
+        this.roomState = roomState;
+    }
+
+    public String getRoomdescribe() {
+        return roomdescribe;
+    }
+
+    public void setRoomdescribe(String roomdescribe) {
+        this.roomdescribe = roomdescribe;
+    }
 }

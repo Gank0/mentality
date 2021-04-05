@@ -10,6 +10,7 @@ public class Appointment {
     private String c_id;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date appTime;
+    private int timePart;
     private int important;
     private String appRoom;
     private int score;
@@ -19,16 +20,25 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(int appointNo, String s_no, String c_id, Date appTime, int important, String appRoom, int score, int state, String note) {
+    public Appointment(int appointNo, String s_no, String c_id, Date appTime, int timePart, int important, String appRoom, int score, int state, String note) {
         this.appointNo = appointNo;
         this.s_no = s_no;
         this.c_id = c_id;
         this.appTime = appTime;
+        this.timePart = timePart;
         this.important = important;
         this.appRoom = appRoom;
         this.score = score;
         this.state = state;
         this.note = note;
+    }
+
+    public int getTimePart() {
+        return timePart;
+    }
+
+    public void setTimePart(int timePart) {
+        this.timePart = timePart;
     }
 
     public int getAppointNo() {
@@ -110,6 +120,7 @@ public class Appointment {
                 ", s_no='" + s_no + '\'' +
                 ", c_id='" + c_id + '\'' +
                 ", appTime=" + appTime +
+                ", timePart=" + timePart +
                 ", important=" + important +
                 ", appRoom='" + appRoom + '\'' +
                 ", score=" + score +

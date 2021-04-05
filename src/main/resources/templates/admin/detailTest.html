@@ -229,7 +229,7 @@
                 <ul>
 
                     <li class="submenu">
-                        <a class="active" href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                        <a href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
 
 
@@ -285,11 +285,10 @@
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="breadcrumb-holder">
-							<h1 class="main-title float-left">Add new page</h1>
+							<h1 class="main-title float-left">学生答题详细记录</h1>
 							<ol class="breadcrumb float-right">
-							<li class="breadcrumb-item">Home</li>
-							<li class="breadcrumb-item">Pages</li>
-							<li class="breadcrumb-item active">Add page</li>
+							<li class="breadcrumb-item">学生答题记录</li>
+							<li class="breadcrumb-item active">详细记录</li>
 							</ol>
 							<div class="clearfix"></div>
 						</div>
@@ -308,7 +307,31 @@
 						<div class="card mb-3">
 									
 						<div class="card-body">
+                            <h6 style="">该同学得分：</h6>
+                            <h6 th:if="${score>=60}" style="color: #1b7943" th:text="${score}"></h6>
+                            <h6 th:if="${score<60}" style="color: red" th:text="${score}"></h6>
+                            <br>
+                            <h6>各项指标：</h6>
+                            <h6 th:text="${type0}"></h6>
+                            <h6 th:text="${type1}"></h6>
+                            <h6 th:text="${type2}"></h6>
+                            <h6 th:text="${type3}"></h6>
 
+
+                            <br>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <i class="fa fa-table"></i> 各类分数统计图
+                                    </div>
+
+                                    <div class="card-body">
+                                        <canvas id="barChart"></canvas>
+                                    </div>
+
+                                </div><!-- end card-->
+                            </div>
+                            <br>
                             <h6> 该同学答案：</h6>
 
 
@@ -322,7 +345,7 @@
                                 <tbody>
                                 <tr th:each="ans,ansState:${ans}"}>
                                     <th scope="row" th:text="${ansState.count}">1</th>
-                                    <td th:text="${ans}">Mark</td>
+                                    <td th:text="${ans}"></td>
 
                                 </tr>
                                 </tbody>
@@ -411,6 +434,58 @@ $(document).ready(function () {
 }); 
 </script>
 <!-- END Java Script for this page -->
+
+
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js}"></script>
+<script th:inline="javascript">
+    // barChart
+    var type0 = [[${type0}]];
+    var type1 = [[${type1}]];
+    var type2 = [[${type2}]];
+    var type3 = [[${type3}]];
+
+
+    var ctx1 = document.getElementById("barChart").getContext('2d');
+    var barChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+
+            labels: ["类型1", "类型2", "类型3", "类型4"],
+            datasets: [{
+                data: [type0,type1,type2,type3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            legend:{
+                display:false
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+
+
+</script>
+
 
 </body>
 </html>

@@ -1,21 +1,21 @@
 package com.bishe.mentality.controller;
 
-import com.bishe.mentality.dao.StuDAO;
+
 import com.bishe.mentality.entity.*;
 import com.bishe.mentality.service.*;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import sun.security.krb5.internal.APOptions;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
-import java.awt.event.MouseListener;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -42,6 +42,8 @@ public class AdminController {
     private LeaveService leaveService;
     @Autowired
     private RoomService roomService;
+    @Autowired
+    private EventService eventService;
 
     @GetMapping("/findAllAdmin")
     public String findall(Model model, HttpSession httpSession){
@@ -164,14 +166,29 @@ public class AdminController {
         return "admin/record";
     }
     @GetMapping("/detailTest")
-    public String deTest(String s_no,Model model){
+    public String deTest(int R_no,Model model){
         List<Testquestion> testquestions = new LinkedList<>();
-        Record record=recordService.findRecord(s_no);
+        Record record=recordService.findRecord(R_no);
         testquestions.add(testqService.findQByNo(record.getTestno1()));
         testquestions.add(testqService.findQByNo(record.getTestno2()));
         testquestions.add(testqService.findQByNo(record.getTestno3()));
         testquestions.add(testqService.findQByNo(record.getTestno4()));
         testquestions.add(testqService.findQByNo(record.getTestno5()));
+        testquestions.add(testqService.findQByNo(record.getTestno6()));
+        testquestions.add(testqService.findQByNo(record.getTestno7()));
+        testquestions.add(testqService.findQByNo(record.getTestno8()));
+        testquestions.add(testqService.findQByNo(record.getTestno9()));
+        testquestions.add(testqService.findQByNo(record.getTestno10()));
+        testquestions.add(testqService.findQByNo(record.getTestno11()));
+        testquestions.add(testqService.findQByNo(record.getTestno12()));
+        testquestions.add(testqService.findQByNo(record.getTestno13()));
+        testquestions.add(testqService.findQByNo(record.getTestno14()));
+        testquestions.add(testqService.findQByNo(record.getTestno15()));
+        testquestions.add(testqService.findQByNo(record.getTestno16()));
+        testquestions.add(testqService.findQByNo(record.getTestno17()));
+        testquestions.add(testqService.findQByNo(record.getTestno18()));
+        testquestions.add(testqService.findQByNo(record.getTestno19()));
+        testquestions.add(testqService.findQByNo(record.getTestno20()));
         model.addAttribute("questions",testquestions);
         List<String> ans=new LinkedList<>();
         ans.add(record.getAnswer1());
@@ -179,7 +196,28 @@ public class AdminController {
         ans.add(record.getAnswer3());
         ans.add(record.getAnswer4());
         ans.add(record.getAnswer5());
+        ans.add(record.getAnswer6());
+        ans.add(record.getAnswer7());
+        ans.add(record.getAnswer8());
+        ans.add(record.getAnswer9());
+        ans.add(record.getAnswer10());
+        ans.add(record.getAnswer11());
+        ans.add(record.getAnswer12());
+        ans.add(record.getAnswer13());
+        ans.add(record.getAnswer14());
+        ans.add(record.getAnswer15());
+        ans.add(record.getAnswer16());
+        ans.add(record.getAnswer17());
+        ans.add(record.getAnswer18());
+        ans.add(record.getAnswer19());
+        ans.add(record.getAnswer20());
         model.addAttribute("ans",ans);
+        model.addAttribute("score",record.getScore());
+        model.addAttribute("type0",record.getType0());
+        model.addAttribute("type1",record.getType1());
+        model.addAttribute("type2",record.getType2());
+        model.addAttribute("type3",record.getType3());
+
         return "admin/detailTest";
     }
     @PostMapping("/actOut")
@@ -255,4 +293,93 @@ public class AdminController {
         return "redirect:/admin/findAllRoom";
     }
 
+    @GetMapping("/findAllEvent")
+    public String findAllEvent(Model model){
+        List<Event> events=eventService.FindAllEvent();
+        Map<Event,Student> map=new HashMap<>();
+
+        for(int i = 0 ; i < events.size() ; i++) {
+            if(stuService.findStu(events.get(i).getS_no())!=null){
+                map.put(events.get(i),stuService.findStu(events.get(i).getS_no()));
+            }else{
+                Student stu=new Student();
+                map.put(events.get(i),stu);
+            }
+        }
+
+        model.addAttribute("map",map);
+
+        return "admin/eventList";
+    }
+
+    @GetMapping("/score")
+    public String giveScore(int E_no,Model model){
+        Event events=eventService.FindEventByEno(E_no);
+        model.addAttribute("events",events);
+        return "admin/editEventScore";
+    }
+    @PostMapping("saveEventScore")
+    public String saveEventScore(int E_no,int e_score){
+        eventService.updateScore(E_no,e_score);
+        return "redirect:/admin/findAllEvent";
+    }
+    @GetMapping("getScoreRank")
+    public String getScoreRank(Model model){
+        List<ScoreAndStu> map=eventService.RankScore();
+        model.addAttribute("map",map);
+        return "admin/rank";
+    }
+    @GetMapping("collegeRank")
+    public String collegeRank(Model model){
+        List<collegeAvg> avgs=eventService.avgsEventCollege();
+        model.addAttribute("avgs",avgs);
+        List<Double> avg=new LinkedList<>();
+        List<String> collegeSet=new LinkedList<>();
+        for(int i=0;i<avgs.size();i++){
+            avg.add(avgs.get(i).getAvgs());
+            collegeSet.add(avgs.get(i).getS_college());
+        }
+        model.addAttribute("avg",avg);
+        model.addAttribute("collegeSet",collegeSet);
+        return "admin/rankCollege";
+    }
+    @GetMapping("collegeRankCopy")
+    public String collegeRankCopy(Model model){
+        List<collegeSum> sums=eventService.countEventCollege();
+        model.addAttribute("sums",sums);
+        List<Integer> sum=new LinkedList<>();
+        List<String> collegeSet=new LinkedList<>();
+        for(int i=0;i<sums.size();i++){
+            sum.add(sums.get(i).getNums());
+            collegeSet.add(sums.get(i).getS_college());
+        }
+        model.addAttribute("sum",sum);
+        model.addAttribute("collegeSet",collegeSet);
+        return "admin/rankCollegeCopy";
+    }
+
+    @GetMapping("searchRoom")
+    public String searchRoom(Model model){
+        List<Conroom> conrooms=roomService.findAllRoom();
+        List<String> rooms=new LinkedList<>();
+        for(int i=0;i<conrooms.size();i++){
+            rooms.add(conrooms.get(i).getRoomName());
+        }
+        model.addAttribute("rooms",rooms);
+        return "admin/searchRoom";
+    }
+
+    @PostMapping("roomSearch")
+    public String roomSearch(String room, Model model){
+        List<Appointment> apps=appoService.findAppByRoom(room);
+        model.addAttribute("appos",apps);
+        List<Conroom> conrooms=roomService.findAllRoom();
+        List<String> rooms=new LinkedList<>();
+        for(int i=0;i<conrooms.size();i++){
+            rooms.add(conrooms.get(i).getRoomName());
+        }
+        model.addAttribute("rooms",rooms);
+        return "admin/searchRoom";
+
+    }
 }

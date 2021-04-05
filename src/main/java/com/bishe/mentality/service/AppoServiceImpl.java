@@ -51,4 +51,9 @@ public class AppoServiceImpl implements AppoService{
     public List<Appointment> findConBetweenDate(Date startDate, Date endDate,String cid) {
         return appoDAO.findConBetweenDate(startDate,endDate,cid);
     }
+
+    @Override
+    public List<Appointment> findAppByRoom(String appRoom) {
+        return appoDAO.findAppByRoom(appRoom);
+    }
 }

@@ -4,16 +4,23 @@
 <mapper namespace="com.bishe.mentality.dao.RecordDAO">
 
     <insert id="saveRecord" parameterType="com.bishe.mentality.entity.Record">
-        insert  into t_record values(#{s_no},#{Testno1},#{answer1},#{Testno2},#{answer2},#{Testno3},#{answer3},#{Testno4},#{answer4},#{Testno5},#{answer5},#{score})
+        insert  into t_record values(#{R_no},#{s_no},#{Testno1},#{answer1},#{Testno2},#{answer2},#{Testno3},#{answer3},#{Testno4},#{answer4},#{Testno5},#{answer5},
+        #{Testno6},#{answer6},#{Testno7},#{answer7},#{Testno8},#{answer8},#{Testno9},#{answer9},#{Testno10},#{answer10},
+        #{Testno11},#{answer11},#{Testno12},#{answer12},#{Testno13},#{answer13},#{Testno14},#{answer14},#{Testno15},#{answer15},
+        #{Testno16},#{answer16},#{Testno17},#{answer17},#{Testno18},#{answer18},#{Testno19},#{answer19},#{Testno20},#{answer20},#{score},#{type0},#{type1},#{type2},#{type3})
     </insert>
     <select id="findAllRecord" resultType="com.bishe.mentality.entity.Record">
-        select s_no,Testno1,answer1,Testno2,answer2,Testno3,answer3,Testno4,answer4,Testno5,answer5,score from t_record
+        select R_no,s_no,Testno1,answer1,Testno2,answer2,Testno3,answer3,Testno4,answer4,Testno5,answer5,Testno6,answer6,Testno7,answer7,Testno8,answer8,Testno9,answer9,Testno10,answer10,
+        Testno6,answer6,Testno7,answer7,Testno8,answer8,Testno9,answer9,Testno10,answer10,Testno11,answer11,Testno12,answer12,Testno13,answer13,Testno14,answer14,Testno15,answer15,
+        Testno16,answer16,Testno17,answer17,Testno18,answer18,Testno19,answer19,Testno20,answer20,score,type0,type1,type2,type3 from t_record
     </select>
     <select id="findRecord" resultType="com.bishe.mentality.entity.Record">
-        select s_no,Testno1,answer1,Testno2,answer2,Testno3,answer3,Testno4,answer4,Testno5,answer5,score from t_record where s_no=#{s_no}
+        select R_no,s_no,Testno1,answer1,Testno2,answer2,Testno3,answer3,Testno4,answer4,Testno5,answer5,Testno6,answer6,Testno7,answer7,Testno8,answer8,Testno9,answer9,Testno10,answer10,
+        Testno6,answer6,Testno7,answer7,Testno8,answer8,Testno9,answer9,Testno10,answer10,Testno11,answer11,Testno12,answer12,Testno13,answer13,Testno14,answer14,Testno15,answer15,
+        Testno16,answer16,Testno17,answer17,Testno18,answer18,Testno19,answer19,Testno20,answer20,score,type0,type1,type2,type3 from t_record where R_no=#{R_no}
     </select>
 
     <select id="lowRecord" parameterType="int" resultType="com.bishe.mentality.entity.Record">
-        select s_no,score from t_record where score &lt; #{score}
+        select R_no,s_no,score from t_record where score &lt; #{score}
     </select>
 </mapper>

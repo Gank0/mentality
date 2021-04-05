@@ -15,4 +15,6 @@ public interface AppoDAO {
     Appointment findAppoByno(String no);
     void updateAppo(Appointment appointment);
     List<Appointment> findConBetweenDate(Date startDate, Date endDate,String cid);
+    List<Appointment> findAppByRoom(String appRoom);
+
 }

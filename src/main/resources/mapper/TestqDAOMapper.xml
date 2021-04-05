@@ -9,12 +9,12 @@
 
 <!--    查询所有题目-->
     <select id="findAllQ" resultType="com.bishe.mentality.entity.Testquestion">
-        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD from t_testquestion
+        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD,typeQ from t_testquestion
     </select>
 
     <!--    查询1题目-->
     <select id="findQByNo" parameterType="int" resultType="com.bishe.mentality.entity.Testquestion">
-        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD from t_testquestion where Testno=#{Testno}
+        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD,typeQ from t_testquestion where Testno=#{Testno}
     </select>
 
 <!--    删除by no-->
@@ -25,12 +25,21 @@
     <update id="updateQ" parameterType="com.bishe.mentality.entity.Testquestion">
         update t_testquestion set testQuestion=#{testQuestion},answerA=#{answerA},answerB=#{answerB},
         answerC=#{answerC},answerD=#{answerD},scoreA=#{scoreA},scoreB=#{scoreB},
-        scoreC=#{scoreC},scoreD=#{scoreD} where Testno=#{Testno}
+        scoreC=#{scoreC},scoreD=#{scoreD},typeQ=#{typeQ} where Testno=#{Testno}
     </update>
 
 <!--    随机选择xx题-->
-    <select id="randomSelect" resultType="com.bishe.mentality.entity.Testquestion">
-        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD from t_testquestion ORDER BY RAND() LIMIT 5
+    <select id="randomSelect0" resultType="com.bishe.mentality.entity.Testquestion">
+        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD,typeQ from t_testquestion  WHERE typeQ='0' ORDER BY RAND() LIMIT 5
+    </select>
+    <select id="randomSelect1" resultType="com.bishe.mentality.entity.Testquestion">
+        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD,typeQ from t_testquestion  WHERE typeQ='1' ORDER BY RAND() LIMIT 5
+    </select>
+    <select id="randomSelect2" resultType="com.bishe.mentality.entity.Testquestion">
+        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD,typeQ from t_testquestion  WHERE typeQ='2' ORDER BY RAND() LIMIT 5
+    </select>
+    <select id="randomSelect3" resultType="com.bishe.mentality.entity.Testquestion">
+        select Testno,testQuestion,answerA,answerB,answerC,answerD,scoreA,scoreB,scoreC,scoreD,typeQ from t_testquestion  WHERE typeQ='3' ORDER BY RAND() LIMIT 5
     </select>
 
     <select id="scoreA" parameterType="int" resultType="int">
@@ -45,16 +54,9 @@
     <select id="scoreD" parameterType="int" resultType="int">
         select scoreD from t_testquestion where Testno=#{Testno}
     </select>
-
-<!--    <delete id="deleteAdmin" parameterType="String">-->
-<!--        delete from t_admin where id=#{id}-->
-<!--    </delete>-->
-
-
-<!--    &lt;!&ndash;    根据id修改信息&ndash;&gt;-->
-<!--    <update id="editAdmin" parameterType="com.bishe.mentality.entity.Admin">-->
-<!--        update t_admin set name=#{name},password=#{password} where id=#{id}-->
-<!--    </update>-->
+    <select id="typeQ" parameterType="int" resultType="int">
+        select typeQ from t_testquestion where Testno=#{Testno}
+    </select>
 
 
 </mapper>

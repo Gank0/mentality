@@ -239,7 +239,7 @@
 				<ul>
 
 					<li class="submenu">
-						<a class="active" href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+						<a  href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
 					</li>
 
 
@@ -330,6 +330,7 @@
 											<tr>
                                                 <th>编号</th>
                                                 <th>学/工号</th>
+                                                <th>分数</th>
 												<th>操作</th>
 											</tr>
 										</thead>										
@@ -345,7 +346,10 @@
                                                 </td>
 
                                                 <td>
-                                                    <a role="button" class="btn btn-primary" th:href="@{/admin/detailTest(s_no=${rec.s_no})}">详细信息</a>
+                                                    <span th:text="${rec.score}"></span>
+                                                </td>
+                                                <td>
+                                                    <a role="button" class="btn btn-primary" th:href="@{/admin/detailTest(R_no=${rec.R_no})}">详细信息</a>
                                                 </td>
                                             </tr>
 										</tbody>

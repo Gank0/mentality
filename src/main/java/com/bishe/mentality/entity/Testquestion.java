@@ -20,6 +20,7 @@ public class Testquestion {
     private int scoreB;
     private int scoreC;
     private int scoreD;
+    private int typeQ;
 
     public int getTestno() {
         return Testno;
@@ -99,5 +100,13 @@ public class Testquestion {
 
     public void setScoreD(int scoreD) {
         this.scoreD = scoreD;
+    }
+
+    public int getTypeQ() {
+        return typeQ;
+    }
+
+    public void setTypeQ(int typeQ) {
+        this.typeQ = typeQ;
     }
 }

@@ -11,7 +11,8 @@ import java.util.List;
 
 @Service
 @Transactional
-public class StuServiceImpl implements StuService{
+public class StuServiceImpl implements StuService {
+
 
     @Autowired
     StuDAO stuDAO;
@@ -20,14 +21,13 @@ public class StuServiceImpl implements StuService{
     @Override
     @Transactional(propagation = Propagation.SUPPORTS)
     public void register(Student student) {
-       // student.setS_no("123");
         stuDAO.saveStu(student);
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS)
-    public Student login(String id,String pwd){
-        return stuDAO.loginStu(id,pwd);
+    public Student login(String id, String pwd) {
+        return stuDAO.loginStu(id, pwd);
     }
 
     @Override
@@ -52,5 +52,10 @@ public class StuServiceImpl implements StuService{
     @Transactional(propagation = Propagation.SUPPORTS)
     public void editStu(Student student) {
         stuDAO.editStu(student);
+    }
+
+    @Override
+    public List<Student> ALLbjy() {
+        return stuDAO.ALLbjy();
     }
 }

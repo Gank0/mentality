@@ -10,9 +10,13 @@ public interface TestqService {
     void updateQ(Testquestion testquestion);
     Testquestion findQByNo(int Testno);
     void deleteQByNo(int Testno);
-    List<Testquestion> randomSelect();
+    List<Testquestion> randomSelect0();
+    List<Testquestion> randomSelect1();
+    List<Testquestion> randomSelect2();
+    List<Testquestion> randomSelect3();
     int scoreA(int Testno);
     int scoreB(int Testno);
     int scoreC(int Testno);
     int scoreD(int Testno);
+    int typeQ(int Testno);
 }

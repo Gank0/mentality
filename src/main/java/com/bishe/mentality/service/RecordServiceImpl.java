@@ -24,8 +24,8 @@ public class RecordServiceImpl implements RecordService {
     }
 
     @Override
-    public Record findRecord(String s_no) {
-        return recordDAO.findRecord(s_no);
+    public Record findRecord(int R_no) {
+        return recordDAO.findRecord(R_no);
     }
 
     @Override

@@ -42,8 +42,23 @@ public class TestqServiceImpl implements TestqService {
     }
 
     @Override
-    public List<Testquestion> randomSelect() {
-        return testqDAO.randomSelect();
+    public List<Testquestion> randomSelect0() {
+        return testqDAO.randomSelect0();
+    }
+
+    @Override
+    public List<Testquestion> randomSelect1() {
+        return testqDAO.randomSelect1();
+    }
+
+    @Override
+    public List<Testquestion> randomSelect2() {
+        return testqDAO.randomSelect2();
+    }
+
+    @Override
+    public List<Testquestion> randomSelect3() {
+        return testqDAO.randomSelect3();
     }
 
     @Override
@@ -64,5 +79,10 @@ public class TestqServiceImpl implements TestqService {
     @Override
     public int scoreD(int Testno) {
         return testqDAO.scoreD(Testno);
+    }
+
+    @Override
+    public int typeQ(int Testno) {
+        return testqDAO.typeQ(Testno);
     }
 }

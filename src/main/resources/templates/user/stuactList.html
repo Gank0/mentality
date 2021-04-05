@@ -21,7 +21,7 @@
 
 		<!-- Custom CSS -->
 		<link th:href="@{~/assets/css/style1.css}" rel="stylesheet" type="text/css" />
-		
+        <link th:href="@{~/assets/css/tablestyle.css}" rel="stylesheet" />
 		<!-- BEGIN CSS for this page -->
 		<link rel="stylesheet" type="text/css" th:href="@{https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css}"/>
 		<style>
@@ -46,7 +46,7 @@
 
 		<!-- LOGO -->
         <div class="headerbar-left">
-			<a href="#" class="logo"><img alt="Logo" th:src="@{~/assets/images/logo.png}" /> <span>Admin</span></a>
+			<a href="#" class="logo"><img alt="Logo" th:src="@{~/assets/images/logo.png}" /> <span>STU</span></a>
 		</div>
 
         <nav class="navbar-custom">
@@ -239,7 +239,7 @@
                 <ul>
 
                     <li class="submenu">
-                        <a class="active" href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                        <a  href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
 
 
@@ -292,10 +292,10 @@
 				<div class="row">
 						<div class="col-xl-12">
 								<div class="breadcrumb-holder">
-										<h1 class="main-title float-left">Data Tables</h1>
+										<h1 class="main-title float-left">活动参与</h1>
 										<ol class="breadcrumb float-right">
-											<li class="breadcrumb-item">Home</li>
-											<li class="breadcrumb-item active">Data Tables</li>
+											<li class="breadcrumb-item">主页</li>
+											<li class="breadcrumb-item active">活动参与</li>
 										</ol>
 										<div class="clearfix"></div>
 								</div>
@@ -314,7 +314,6 @@
                         <div class="card mb-3">
 
                             <div class="card-header">
-                                <span class="pull-right"><a href="pro-articles-add.html" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add new article</a></span>
                                 <h3><i class="fa fa-file-text-o"></i> 所有活动 </h3>
                             </div>
                             <!-- end card-header -->
@@ -322,10 +321,11 @@
                             <div class="card-body">
 
                                 <div class="table-responsive">
-                                    <table class="table table-bordered">
+                                    <table id="example1" class="table table-bordered">
                                         <thead>
                                         <tr>
                                             <th>编号</th>
+                                            <th>活动图片</th>
                                             <th>活动介绍</th>
                                             <th style="width:160px">目前状态</th>
                                             <th style="width:100px">操作</th>
@@ -338,9 +338,12 @@
                                                 <span th:text="${ActState.count}"></span>
                                             </td>
                                             <td>
-                                                <span style="float: left; margin-right:10px;"><img style="width:auto; max-height:140px;" th:src="@{${Act.ActImg}}"></span>
+                                                <span ><img width="350px" th:src="@{${Act.ActImg}}"></span>
+                                            </td>
+                                            <td>
                                                 <h5 th:text="${Act.ActName}"> l</h5>地点: <b th:text="${Act.ActPlace}">地点</b> 时间：<b th:text="${#dates.format(Act.ActTime, 'yyyy-MM-dd')}">时间</b><br>
                                                 <small th:text="${Act.ActNote}">详情</small>
+                                                </td>
                                             </td>
 
                                             <td th:switch="${Act.State}">
@@ -441,8 +444,8 @@
 
     <footer class="footer">
 		<span class="text-right">
-		Copyright &copy; 2019.Company name All rights reserved.<a target="_blank" th:href="@{http://sc.chinaz.com/moban/}">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-		</span>
+		Copyright &copy; 2021.
+        </span>
 		<span class="float-right">
 		
 		</span>
