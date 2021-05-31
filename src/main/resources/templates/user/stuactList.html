@@ -351,14 +351,15 @@
                                                 <span th:case="1" th:text="报名中"></span>
                                             </td>
                                             <td >
-                                                <a th:if="${!#lists.contains(hasAct,Act.ActNo)}"
+                                                <a th:if="${!#lists.contains(hasAct,Act.ActNo)&& Act.State eq 1}"
                                                    role="button" class="btn"  th:href="@{/user/addAtt(ActNo=${Act.ActNo})}"
                                                    onclick="return attAct()" th:value="${Act.ActNo}">
                                                     报名参加
                                                 </a>
-                                                <h5 th:if="${#lists.contains(hasAct,Act.ActNo)}" th:text="已报名" > </h5>
+                                                <h5 th:if="${Act.State eq 0}" th:text="报名截止" style="color: red"></h5>
+                                                <h5 th:if="${#lists.contains(hasAct,Act.ActNo)}" th:text="已报名" style="color:green;" > </h5>
                                             </td>
-<!--                                            ${#lists.contains(list, element)}-->
+
                                         </tr>
                                         </tbody>
                                     </table>

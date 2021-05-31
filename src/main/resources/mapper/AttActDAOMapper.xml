@@ -12,6 +12,9 @@
     <select id="FindAttBysno" resultType="com.bishe.mentality.entity.AttenActivity">
         select s_no,ActNo,Note from t_attenActivity WHERE s_no=#{s_no}
     </select>
+    <select id="FindAttByAno" parameterType="int"  resultType="com.bishe.mentality.entity.AttenActivity">
+        select s_no,ActNo,Note from t_attenActivity WHERE ActNo=#{ActNo}
+    </select>
 
 
 </mapper>

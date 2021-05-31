@@ -25,7 +25,7 @@ public class TestController {
         return "Page";
     }
 
-    // 执行上传
+    // 执行上传活动封面
     @RequestMapping("upload")
     public String upload(@RequestParam("file") MultipartFile file,Model model) {
         // 获取上传文件名

@@ -4,23 +4,23 @@
 <mapper namespace="com.bishe.mentality.dao.AppoDAO">
 <!--    新建预约-->
     <insert id="creatAppo" parameterType="com.bishe.mentality.entity.Appointment">
-        insert into t_appointment values(#{appointNo},#{s_no},#{c_id},#{appTime},#{important},#{appRoom},#{score},#{state},#{note})
+        insert into t_appointment values(#{appointNo},#{s_no},#{c_id},#{appTime},#{timePart},#{appRoom},#{score},#{state},#{important},#{note})
     </insert>
 
 <!--    根据c_id查询预约记录-->
     <select id="findAppoBycid" parameterType="String" resultType="com.bishe.mentality.entity.Appointment">
-        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,appRoom,score,state,important,note from t_appointment where c_id=#{c_id}
+        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,timePart,appRoom,score,state,important,note from t_appointment where c_id=#{c_id}
     </select>
 <!--    根据s_no查询预约记录-->
     <select id="findAppoBysno" parameterType="String" resultType="com.bishe.mentality.entity.Appointment">
-        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,appRoom,score,state,important,note from t_appointment where s_no=#{s_no}
+        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,timePart,appRoom,score,state,important,note from t_appointment where s_no=#{s_no}
     </select>
 <!--    查询所有预约记录-->
     <select id="findAllAppo" resultType="com.bishe.mentality.entity.Appointment">
-        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,appRoom,score,state,important,note from t_appointment
+        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,timePart,appRoom,score,state,important,note from t_appointment
     </select>
     <select id="findAppoByno" parameterType="String" resultType="com.bishe.mentality.entity.Appointment">
-        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,appRoom,score,state,important,note from t_appointment where appointNo=#{appointNo}
+        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,timePart,appRoom,score,state,important,note from t_appointment where appointNo=#{appointNo}
     </select>
 
     <!--    根据appNo修改信息-->
@@ -29,6 +29,9 @@
     </update>
 
     <select id="findConBetweenDate" resultType="com.bishe.mentality.entity.Appointment">
-        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,appRoom,score,state,important,note from t_appointment where appTime &gt;= #{startDate} and appTime &lt;=DATE_SUB(#{endDate},INTERVAL -1 DAY) and c_id=#{cid}
+        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,timePart,appRoom,score,state,important,note from t_appointment where appTime &gt;= #{startDate} and appTime &lt;=DATE_SUB(#{endDate},INTERVAL -1 DAY) and c_id=#{cid}
+    </select>
+    <select id="findAppByRoom" parameterType="String" resultType="com.bishe.mentality.entity.Appointment">
+        select appointNo,s_no,c_id,DATE_FORMAT(appTime,'%Y-%m-%d') as appTime,timePart,appRoom,score,state,important,note from t_appointment  WHERE appRoom=#{appRoom}
     </select>
 </mapper>

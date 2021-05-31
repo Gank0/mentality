@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -243,7 +244,7 @@
 						<a th:href="@{/user/doTest}"><i class="fa fa-fw fa-area-chart"></i><span> 心理测评 </span> </a>
 					</li>
 					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 减压指导 </span> </a>
+						<a th:href="@{/user/articleList}"><i class="fa fa-fw fa-area-chart"></i><span> 减压指导 </span> </a>
 					</li>
 					<li class="submenu">
 						<a th:href="@{/user/stuactList}"><i class="fa fa-fw fa-area-chart"></i><span> 活动参与 </span> </a>

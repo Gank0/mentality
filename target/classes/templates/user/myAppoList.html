@@ -244,16 +244,16 @@
                 <ul>
 
                     <li class="submenu">
-                        <a class="active" href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                        <a  href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
 
 
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 心理咨询预约服务 </span> <span class="menu-arrow"></span></a>
+                        <a class="active" href="#"><i class="fa fa-fw fa-table"></i> <span> 心理咨询预约服务 </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a th:href="@{/consulant/findAllCon}">预约咨询</a></li>
-                            <li><a href="#">我的预约</a></li>
+                            <li class="active"><a href="#">我的预约</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
@@ -297,10 +297,10 @@
 				<div class="row">
 						<div class="col-xl-12">
 								<div class="breadcrumb-holder">
-										<h1 class="main-title float-left">Data Tables</h1>
+										<h1 class="main-title float-left">我的预约</h1>
 										<ol class="breadcrumb float-right">
-											<li class="breadcrumb-item">Home</li>
-											<li class="breadcrumb-item active">Data Tables</li>
+											<li class="breadcrumb-item">主页</li>
+											<li class="breadcrumb-item active">我的预约</li>
 										</ol>
 										<div class="clearfix"></div>
 								</div>
@@ -313,13 +313,12 @@
 
 				
 				<div class="row">
-				
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
 							<div class="card mb-3">
 								<div class="card-header">
-									<h3><i class="fa fa-table"></i> Basic data table</h3>
-									DataTables is a plug-in for the jQuery Javascript library. It is a highly flexible tool, based upon the foundations of progressive enhancement, and will add advanced interaction controls to any HTML table: pagination, instant search and multi-column ordering. <a target="_blank" href="https://datatables.net/">(more details)</a>
-								</div>
+									<h3><i class="fa fa-table"></i> 我的预约</h3>
+                                </div>
 									
 								<div class="card-body">
 									<div class="table-responsive">
@@ -332,7 +331,7 @@
                                                 <th>咨询室</th>
                                                 <th>状态</th>
                                                 <th>备注</th>
-												<th>评分</th>
+
 											</tr>
 										</thead>										
 										<tbody>
@@ -344,8 +343,12 @@
                                                 <td>
                                                     <span th:text="${appo.s_no}"></span>
                                                 </td>
-                                                <td>
+                                                <td th:switch="${appo.timePart}">
                                                     <span th:text="${#dates.format(appo.appTime, 'yyyy-MM-dd')}"></span>
+                                                    <span th:case="0" th:text="8时-10时"></span>
+                                                    <span th:case="1" th:text="10时-12时"></span>
+                                                    <span th:case="2" th:text="14时-17时"></span>
+                                                    <span th:case="3" th:text="19时-21时"></span>
                                                 </td>
                                                 <td>
                                                     <span th:text="${appo.appRoom}"></span>
@@ -360,9 +363,6 @@
                                                 <td>
                                                     <span th:text="${appo.note}"></span>
                                                 </td>
-                                                <td>
-
-                                                </td>
                                             </tr>
 										</tbody>
 
@@ -371,7 +371,7 @@
 									</div>
 								</div>														
 							</div><!-- end card-->
-						
+                    </div>
 
 
 				</div>
@@ -444,7 +444,7 @@
 
     <footer class="footer">
 		<span class="text-right">
-		Copyright &copy; 2019.Company name All rights reserved.<a target="_blank" th:href="@{http://sc.chinaz.com/moban/}">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+		Copyright &copy; 2021.
 		</span>
 		<span class="float-right">
 		

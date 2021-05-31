@@ -28,7 +28,6 @@
 		<!-- END CSS for this page -->
 
 
-
 </head>
 
 <body class="adminbody">
@@ -233,7 +232,7 @@
 			<ul>
 
 					<li class="submenu">
-						<a class="active" href="index1.html"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+						<a class="active"  href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
 
 
@@ -265,6 +264,14 @@
 					<li class="submenu">
 						<a th:href="@{/admin/QueList}"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
 					</li>
+                <li class="submenu">
+                    <a href="#"><i class="fa fa-fw fa-table"></i> <span> 减压指导 </span> <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li> <a th:href="@{/admin/articleList}"> 文章列表 </a> </li>
+                        <li><a th:href="@{/admin/toArticleAdd}"></a>新增文章</li>
+                    </ul>
+                </li>
+
 
 				<li class="submenu">
 					<a href="#"><i class="fa fa-fw fa-table"></i> <span> 活动管理 </span> <span class="menu-arrow"></span></a>
@@ -286,15 +293,11 @@
 					
             </ul>
 
-            <div class="clearfix"></div>
-
-			</div>
-        
-			<div class="clearfix"></div>
 
 		</div>
 
 	</div>
+    </div>
 	<!-- End Sidebar -->
 
 
@@ -386,7 +389,6 @@
 
 </div>
 <!-- END main -->
-
 <script th:src="@{~/assets/js/modernizr1.min.js}"></script>
 <script th:src="@{~/assets/js/jquery1.min.js}"></script>
 <script th:src="@{~/assets/js/moment1.min.js}"></script>
@@ -434,12 +436,7 @@
         img.style.width = '100px';
         img.style.height = '100px';
     }
-
 </script>
-
-
-
-
 <!-- END Java Script for this page -->
 
 </body>

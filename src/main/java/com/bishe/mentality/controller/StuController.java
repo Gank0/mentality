@@ -37,6 +37,8 @@ public class StuController {
     private AppoService appoService;
     @Autowired
     private EventService eventService;
+    @Autowired
+    private ArticleService articleService;
 
     @PostMapping("/register")
     public String register(Student student){
@@ -51,9 +53,12 @@ public class StuController {
                 Student stu=stuService.login(no,password);
                 if(stu!=null){
                     httpSession.setAttribute("uid",no);
+                    httpSession.setAttribute("student", stu);
+                    System.out.println("stu = " + stu.getS_name());
                     return "user/index";
                 }
                 else{
+                    httpSession.setAttribute("msg", 0);
                     return "redirect:/notlogin";
                 }
             }
@@ -61,17 +66,21 @@ public class StuController {
                 Admin adm=adminService.loginAdmin(no,password);
                 if(adm!=null){
                     httpSession.setAttribute("uid",no);
+                    httpSession.setAttribute("adm", adm);
                     return "redirect:/toAdminPage";
                 }else{
-                    return "redirect:/notlogin";
+                    httpSession.setAttribute("msg", 0);
+                    return "index";
                 }
             }else{
                 Consultant con=consultantService.loginCon(no,password);
                 if(con!=null){
                     httpSession.setAttribute("uid",no);
+                    httpSession.setAttribute("con",con);
                     return "redirect:/toConsultantPage";
                 }else {
-                    return "redirect:/notlogin";
+                    httpSession.setAttribute("msg", 0);
+                    return "index";
                 }
             }
         }catch(Exception e){
@@ -171,6 +180,7 @@ public class StuController {
         int type1=0;
         int type2=0;
         int type3=0;
+        /*同上*/
         for(int i=1;i<21;i++) {
             switch (getAnswer(i, records)) {
                 case "A": {
@@ -333,4 +343,19 @@ public class StuController {
         eventService.AddEvent(event);
         return "redirect:/user/stuEventList";
     }
+
+    @GetMapping("articleList")
+    public String articleList(Model model){
+        List<Article> articles=articleService.FindAllArticle();
+        model.addAttribute("articles",articles);
+        return "user/articleList";
+    }
+    @GetMapping("seeArticle")
+    public String seeArticle(Integer Id,Model model){
+        Article article=articleService.FindArticleById(Id);
+        model.addAttribute("article",article);
+        return "user/seeArticle";
+    }
+
+
 }

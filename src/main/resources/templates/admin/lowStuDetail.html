@@ -236,19 +236,19 @@
 
 			<div id="sidebar-menu">
 
-				<ul>
+                <ul>
 
-					<li class="submenu">
-						<a  href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
-					</li>
+                    <li class="submenu">
+                        <a  href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                    </li>
 
 
 
                     <li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> 信息管理 </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a th:href="@{/admin/StuList}" class="active">用户信息管理</a></li>
-                            <li><a href="#">咨询师信息管理</a></li>
+                            <li><a th:href="@{/admin/StuList}">用户信息管理</a></li>
+                            <li><a th:href="@{/admin/ConList}">咨询师信息管理</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
@@ -257,17 +257,28 @@
                             <li class="submenu">
                                 <a th:href="@{/admin/recordlist}"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
                             </li>
-                            <li><a href="#" class="active">问题学生信息</a></li>
+                            <li><a th:href="@{/admin/tolowscore}" class="active">问题学生信息</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 咨询室管理 </span> </a>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 咨询室信息 </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a th:href="@{/admin/findAllRoom}">咨询室管理</a></li>
+                            <li><a th:href="@{/admin/searchRoom}">咨询室使用情况</a></li>
+                        </ul>
                     </li>
-
 
                     <li class="submenu">
                         <a th:href="@{/admin/QueList}"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
                     </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 减压指导 </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li> <a th:href="@{admin/articleList}"><i class="fa fa-fw fa-bars"></i><span> 文章列表 </span> </a> </li>
+                            <li><a th:href="@{/admin/toArticleAdd}"></a>新增文章</li>
+                        </ul>
+                    </li>
+
 
                     <li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> 活动管理 </span> <span class="menu-arrow"></span></a>
@@ -276,9 +287,18 @@
                             <li><a th:href="@{/imagetest}">活动发布</a></li>
                         </ul>
                     </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 优秀保健员考核 </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a th:href="@{/admin/findAllEvent}">保健员活动列表</a></li>
+                            <li><a th:href="@{/admin/getScoreRank}">评分统计</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a th:href="@{/admin/leaveManage}"><i class="fa fa-fw fa-area-chart"></i><span> 请假请求 </span> </a>
+                    </li>
 
-
-				</ul>
+                </ul>
 
 				<div class="clearfix"></div>
 
@@ -304,10 +324,10 @@
 				<div class="row">
 						<div class="col-xl-12">
 								<div class="breadcrumb-holder">
-										<h1 class="main-title float-left">Data Tables</h1>
+										<h1 class="main-title float-left">问题学生信息</h1>
 										<ol class="breadcrumb float-right">
-											<li class="breadcrumb-item">Home</li>
-											<li class="breadcrumb-item active">Data Tables</li>
+											<li class="breadcrumb-item">学生测评信息</li>
+											<li class="breadcrumb-item active">问题学生信息</li>
 										</ol>
 										<div class="clearfix"></div>
 								</div>
@@ -330,24 +350,24 @@
                                     <table border="1" cellpadding="30">
                                         <tr>
                                             <td>学号</td>
-                                            <td><span th:text="${stu.s_no}"></span></td>
+                                            <td><span style="color:green" th:text="${stu.s_no}"></span></td>
                                             <td>姓名</td>
-                                            <td><span th:text="${stu.s_name}"></span></td>
+                                            <td><span style="color:green"  th:text="${stu.s_name}"></span></td>
                                         </tr>
                                         <tr>
                                             <td>学院</td>
-                                            <td><span th:text="${stu.s_college}"></span></td>
+                                            <td><span style="color:green"  th:text="${stu.s_college}"></span></td>
                                             <td>年级</td>
-                                            <td><span th:text="${stu.s_grade}"></span></td>
+                                            <td><span style="color:green"  th:text="${stu.s_grade}"></span></td>
                                         </tr>
-                                    <tr>
-                                        <td>身份</td>
-                                        <td th:switch="${stu.hygienist}" >
-                                            <span th:case="0" th:text="教师"></span>
-                                            <span th:case="1" th:text="学生"></span>
-                                            <span th:case="2" th:text="保健员"></span>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                             <td>身份</td>
+                                             <td th:switch="${stu.hygienist}" >
+                                                <span style="color:green"  th:case="0" th:text="保健员"></span>
+                                                <span style="color:green"  th:case="1" th:text="学生"></span>
+                                                <span style="color:green"  th:case="2" th:text="教师"></span>
+                                             </td>
+                                        </tr>
                                     </table>
                                     <br/>
                                     <br/>
@@ -381,8 +401,11 @@
                                                     <td>
                                                         <span th:text="${#dates.format(app.appTime, 'yyyy-MM-dd')}"></span>
                                                     </td>
-                                                    <td>
-                                                        <span th:text="${app.state}"></span>
+
+                                                    <td th:switch="${app.state}">
+                                                        <span th:case="0" th:text="待确认"></span>
+                                                        <span th:case="1" th:text="已确认"></span>
+                                                        <span th:case="2" th:text="延期"></span>
                                                     </td>
                                                     <td>
                                                         <span th:text="${app.note}"></span>
@@ -471,7 +494,7 @@
 
     <footer class="footer">
 		<span class="text-right">
-		Copyright &copy; 2019.Company name All rights reserved.<a target="_blank" th:href="@{http://sc.chinaz.com/moban/}">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+		Copyright &copy; 2021
 		</span>
 		<span class="float-right">
 		

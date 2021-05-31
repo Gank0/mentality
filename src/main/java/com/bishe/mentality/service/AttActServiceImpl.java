@@ -21,4 +21,9 @@ public class AttActServiceImpl implements AttActService{
     public List<AttenActivity> FindAttBysno(String s_no) {
         return attActDAO.FindAttBysno(s_no);
     }
+
+    @Override
+    public List<AttenActivity> FindAttByAno(int ActNo) {
+        return attActDAO.FindAttByAno(ActNo);
+    }
 }

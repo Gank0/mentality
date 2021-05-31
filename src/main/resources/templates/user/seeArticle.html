@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看文章</title>
+</head>
+<body>
+
+<h1 style="text-align:center" th:text="${article.article_Name}">标题</h1>
+<div class="row">
+    <p style=" font-size:20px; color: #1b7943" th:text="${article.article_category}">类型</p>
+    <p style="color: #6b6b6b;font-size: 20px" th:text="${#dates.format(article.article_Time, 'yyyy-MM-dd HH:mm:ss')}">时间</p>
+</div>
+<p th:text="${article.article_content}">
+
+</p>
+
+
+
+
+
+</body>
+</html>

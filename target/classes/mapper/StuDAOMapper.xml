@@ -16,6 +16,9 @@
     <select id="findAllStu" resultType="com.bishe.mentality.entity.Student">
         select s_no,s_name,s_password,s_gender,s_college,s_grade,hygienist from t_student
     </select>
+    <select id="ALLbjy" resultType="com.bishe.mentality.entity.Student">
+        select s_no,s_name,s_password,s_gender,s_college,s_grade,hygienist from t_student where hygienist=0
+    </select>
 
     <delete id="deleteStu" parameterType="String">
         delete from t_student where s_no=#{s_no}

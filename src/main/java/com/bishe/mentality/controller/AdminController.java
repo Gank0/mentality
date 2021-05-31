@@ -11,9 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import sun.security.krb5.internal.APOptions;
 
-import javax.jws.WebParam;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
@@ -44,6 +42,10 @@ public class AdminController {
     private RoomService roomService;
     @Autowired
     private EventService eventService;
+    @Autowired
+    private ArticleService articleService;
+    @Autowired
+    private AttActService attActService;
 
     @GetMapping("/findAllAdmin")
     public String findall(Model model, HttpSession httpSession){
@@ -220,6 +222,7 @@ public class AdminController {
 
         return "admin/detailTest";
     }
+
     @PostMapping("/actOut")
     public String actOut(Activity activity){
         actService.addAct(activity);
@@ -232,9 +235,18 @@ public class AdminController {
     }
     @GetMapping("/editActState")
     public String editActState(String ActNo){
-
         actService.editStateByNo(ActNo);
         return "redirect:/admin/actList";
+    }
+    @GetMapping("/actDeatail")
+    public String actDeatail(int ActNo,Model model){
+        List<AttenActivity> attenActivities=attActService.FindAttByAno(ActNo);
+        List<Student> students=new LinkedList<>();
+        for(int i=0;i<attenActivities.size();i++){
+            students.add(stuService.findStu(attenActivities.get(i).getS_no()));
+        }
+        model.addAttribute("stus",students);
+        return "admin/actStuList";
     }
     @GetMapping("/tolowscore")
     public String tolowsc(Model model){
@@ -293,6 +305,20 @@ public class AdminController {
         return "redirect:/admin/findAllRoom";
     }
 
+
+
+    @GetMapping("/score")
+    public String giveScore(int E_no,Model model){
+        Event events=eventService.FindEventByEno(E_no);
+        model.addAttribute("events",events);
+        return "admin/editEventScore";
+    }
+    @PostMapping("saveEventScore")
+    public String saveEventScore(int E_no,int e_score){
+        eventService.updateScore(E_no,e_score);
+        return "redirect:/admin/findAllEvent";
+    }
+    //显示所有保健员活动
     @GetMapping("/findAllEvent")
     public String findAllEvent(Model model){
         List<Event> events=eventService.FindAllEvent();
@@ -306,29 +332,17 @@ public class AdminController {
                 map.put(events.get(i),stu);
             }
         }
-
         model.addAttribute("map",map);
-
         return "admin/eventList";
     }
-
-    @GetMapping("/score")
-    public String giveScore(int E_no,Model model){
-        Event events=eventService.FindEventByEno(E_no);
-        model.addAttribute("events",events);
-        return "admin/editEventScore";
-    }
-    @PostMapping("saveEventScore")
-    public String saveEventScore(int E_no,int e_score){
-        eventService.updateScore(E_no,e_score);
-        return "redirect:/admin/findAllEvent";
-    }
+    //保健员活动排名
     @GetMapping("getScoreRank")
     public String getScoreRank(Model model){
         List<ScoreAndStu> map=eventService.RankScore();
         model.addAttribute("map",map);
         return "admin/rank";
     }
+    //学院平均分
     @GetMapping("collegeRank")
     public String collegeRank(Model model){
         List<collegeAvg> avgs=eventService.avgsEventCollege();
@@ -382,4 +396,37 @@ public class AdminController {
         return "admin/searchRoom";
 
     }
+
+    @GetMapping("articleList")
+    public String articleList(Model model){
+        List<Article> articles=articleService.FindAllArticle();
+        model.addAttribute("articles",articles);
+        return "admin/articleList";
+    }
+    @GetMapping("toArticleAdd")
+    public String toArticleAdd(){
+        return "admin/addArticle";
+    }
+    @PostMapping("addArticle")
+    public String addArticle(Article article){
+        Date date=new Date();
+        article.setArticle_Time(date);
+        articleService.AddArticle(article);
+        return "redirect:/admin/articleList";
+    }
+    @GetMapping("toEditArticle")
+    public String toEditArticle(Integer id,Model model){
+        Article article= articleService.FindArticleById(id);
+        model.addAttribute("article",article);
+        return "admin/editArticle";
+    }
+    @PostMapping("editArticle")
+    public String editArticle(Article article){
+        article.setArticle_Time(new Date());
+        articleService.updateArticleById(article);
+        return "redirect:/admin/articleList";
+    }
+
+
+
 }

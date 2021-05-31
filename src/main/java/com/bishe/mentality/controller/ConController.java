@@ -60,7 +60,6 @@ public class ConController {
 
     @PostMapping("/creatApp")
     public String creatApp(Appointment appointment) {
-        System.out.println(appointment);
         appoService.creatAppo(appointment);
         return "redirect:/consulant/findAllCon";
     }

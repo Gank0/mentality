@@ -148,7 +148,7 @@
                                 <!-- item-->
                                 <a href="#" class="dropdown-item notify-item">
                                     <div class="notify-icon bg-faded">
-                                        <img src="assets/images/avatars/avatar3.png" alt="img" class="rounded-circle img-fluid">
+                                        <img th:src="@{~/assets/images/avatars/avatar3.png}" alt="img" class="rounded-circle img-fluid">
                                     </div>
                                     <p class="notify-details">
                                         <b>Michael Cox</b>
@@ -160,7 +160,7 @@
                                 <!-- item-->
                                 <a href="#" class="dropdown-item notify-item">
                                     <div class="notify-icon bg-faded">
-                                        <img src="assets/images/avatars/avatar4.png" alt="img" class="rounded-circle img-fluid">
+                                        <img th:src="@{~/assets/images/avatars/avatar4.png}" alt="img" class="rounded-circle img-fluid">
                                     </div>
                                     <p class="notify-details">
                                         <b>Michelle Dolores</b>
@@ -179,7 +179,7 @@
 
                         <li class="list-inline-item dropdown notif">
                             <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                                <img th:src="@{~/assets/images/avatars/admin.png}" alt="Profile image" class="avatar-rounded">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown">
                                 <!-- item-->
@@ -239,18 +239,37 @@
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> 信息管理 </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a th:href="@{/admin/StuList}">用户信息管理</a></li>
-                            <li><a href="#">咨询师信息管理</a></li>
+                            <li><a th:href="@{/admin/ConList}">咨询师信息管理</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 咨询室管理 </span> </a>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 学生测评信息 </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li class="submenu">
+                                <a th:href="@{/admin/recordlist}"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
+                            </li>
+                            <li><a th:href="@{/admin/tolowscore}">问题学生信息</a></li>
+                        </ul>
                     </li>
                     <li class="submenu">
-                        <a th:href="@{/admin/recordlist}"><i class="fa fa-fw fa-area-chart"></i><span> 学生答题记录 </span> </a>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 咨询室信息 </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a th:href="@{/admin/findAllRoom}">咨询室管理</a></li>
+                            <li><a th:href="@{/admin/searchRoom}">咨询室使用情况</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a class="active" href="#"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
                     </li>
                     <li class="submenu">
-                        <a th:href="@{/admin/QueList}" class="active"><i class="fa fa-fw fa-area-chart"></i><span> 题库编辑 </span> </a>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 减压指导 </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li> <a th:href="@{admin/articleList}"><i class="fa fa-fw fa-bars"></i><span> 文章列表 </span> </a> </li>
+                            <li><a th:href="@{/admin/toArticleAdd}"></a>新增文章</li>
+                        </ul>
                     </li>
+
 
                     <li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> 活动管理 </span> <span class="menu-arrow"></span></a>
@@ -259,7 +278,16 @@
                             <li><a th:href="@{/imagetest}">活动发布</a></li>
                         </ul>
                     </li>
-
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-table"></i> <span> 优秀保健员考核 </span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a th:href="@{/admin/findAllEvent}">保健员活动列表</a></li>
+                            <li><a th:href="@{/admin/getScoreRank}">评分统计</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a th:href="@{/admin/leaveManage}"><i class="fa fa-fw fa-area-chart"></i><span> 请假请求 </span> </a>
+                    </li>
 
                 </ul>
 
@@ -286,11 +314,11 @@
 				<div class="row">
 					<div class="col-xl-12">
 						<div class="breadcrumb-holder">
-							<h1 class="main-title float-left">Add new page</h1>
+							<h1 class="main-title float-left">新增题目</h1>
 							<ol class="breadcrumb float-right">
-							<li class="breadcrumb-item">Home</li>
-							<li class="breadcrumb-item">Pages</li>
-							<li class="breadcrumb-item active">Add page</li>
+							<li class="breadcrumb-item">主页</li>
+							<li class="breadcrumb-item">题库编辑</li>
+							<li class="breadcrumb-item active">新增题目</li>
 							</ol>
 							<div class="clearfix"></div>
 						</div>
@@ -379,6 +407,16 @@
                                             <option value="5" >5</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label>题目类型：</label>
+                                        <select name="typeQ" class="form-control" required>
+                                            <option value="">--选择类型--</option>
+                                            <option  value="0">对外认知</option>
+                                            <option  value="1" >自我接纳</option>
+                                            <option value="2" >压力应对</option>
+                                            <option value="3">情绪控制</option>
+                                        </select>
+                                    </div>
 							    <button type="submit" class="btn btn-primary">保存</button>
 
 								
@@ -409,7 +447,7 @@
     
 	<footer class="footer">
 		<span class="text-right">
-		Copyright &copy; 2019.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+		Copyright &copy; 2021.
 		</span>
 		<span class="float-right">
 		

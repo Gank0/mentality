@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -227,7 +228,7 @@
 			<ul>
 
 					<li class="submenu">
-						<a class="active" href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+						<a  href="#"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
 
 
@@ -243,13 +244,19 @@
 						<a th:href="@{/user/doTest}"><i class="fa fa-fw fa-area-chart"></i><span> 心理测评 </span> </a>
 					</li>
 					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 减压指导 </span> </a>
+						<a th:href="@{/user/articleList}"><i class="fa fa-fw fa-area-chart"></i><span> 减压指导 </span> </a>
 					</li>
 					<li class="submenu">
 						<a th:href="@{/user/stuactList}"><i class="fa fa-fw fa-area-chart"></i><span> 活动参与 </span> </a>
 					</li>
+
 					<li class="submenu">
-						<a href="#"><i class="fa fa-fw fa-area-chart"></i><span> 优秀保健员考核 </span> </a>
+						<a href="#"><i class="fa fa-fw fa-table"></i> <span> 保健员模块 </span> <span class="menu-arrow"></span></a>
+						<ul class="list-unstyled">
+							<li><a th:href="@{/user/toAddEvent}">活动上传</a></li>
+							<li><a th:href="@{/user/stuEventList}">我的活动</a></li>
+							<li><a th:href="@{/user/findAppoByno}">考核情况</a></li>
+						</ul>
 					</li>
 
 

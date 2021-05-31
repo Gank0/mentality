@@ -9,7 +9,7 @@
         insert  into t_activity values(#{ActNo},#{ActName},#{ActImg},#{ActTime},#{ActPlace},#{ActNote},#{State} )
     </insert>
 
-<!--    查询所有题目-->
+
     <select id="allAct" resultType="com.bishe.mentality.entity.Activity">
         select ActNo,ActName,ActImg,ActTime,ActPlace,ActNote,State from t_activity
     </select>

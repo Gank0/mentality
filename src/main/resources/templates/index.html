@@ -2,8 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Home</title>
+
+
 <!-- Custom Theme files -->
-<link href="assets/css/style.css" th:href="@{assets/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+<link th:href="@{~/assets/css/style.css}" rel="stylesheet" type="text/css" />
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,11 +16,11 @@
 </head>
 <body>
 <div class="login">
-	<h2>Acced Form</h2>
+	<h2>校园心理健康服务平台</h2>
 	<div class="login-top">
-		<h1>LOGIN FORM</h1>
+		<h1>进行登录</h1>
 		<form th:action="@{/user/login}" method="post">
-			<p style="color: red;text-align: center" th:text="${msg}"}></p>
+			<p th:if="${msg eq 0 || msg eq 1}" style="color: red;text-align: center" th:text="${msg eq 0} ? 账号或密码错ß误 : 没有权限请登录"}></p>
 			<input type="text" name="no">
 			<input type="password" name="password">
 <!--				   onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">-->
@@ -27,18 +29,17 @@
 			<input type="radio" name="role" th:value="consultant"> 咨询师
 			<input type="radio" name="role" th:value="admin"> 管理员
 			<div class="forgot">
-				<a href="#">forgot Password</a>
+				<a href="#">忘记密码</a>
 				<button type="submit">登录 </button>
 
 			</div>
 	    </form>
 	</div>
 	<div class="login-bottom">
-		<h3>New User &nbsp;<a th:href="@{/user/registhtm}">注册</a>&nbsp Here</h3>
+		<h3>新用户 &nbsp;<a th:href="@{/user/registhtm}">注册</a></h3>
 	</div>
 </div>	
 <div class="copyright">
-	<p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" th:href="@{http://sc.chinaz.com/moban/}">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
 </div>
 
 

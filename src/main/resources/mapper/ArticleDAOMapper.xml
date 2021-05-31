@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bishe.mentality.dao.ArticleDAO">
+
+
+
+    <insert id="AddArticle" parameterType="com.bishe.mentality.entity.Article">
+        insert  into t_article values(#{id},#{article_Name},#{article_category},#{article_content},#{article_Time})
+    </insert>
+
+<!--    查询所有题目-->
+    <select id="FindAllArticle" resultType="com.bishe.mentality.entity.Article">
+        select id,article_Name,article_category,article_content,article_Time FROM t_article
+    </select>
+
+    <select id="FindArticleById" parameterType="Integer" resultType="com.bishe.mentality.entity.Article">
+        select id,article_Name,article_category,article_content,article_Time FROM t_article WHere id=#{id}
+    </select>
+
+    <select id="FindArticleByType" parameterType="Integer" resultType="com.bishe.mentality.entity.Article">
+        select id,article_Name,article_category,article_content,article_Time FROM t_article WHERE article_category=#{article_category}
+    </select>
+
+    <update id="updateArticleById" parameterType="com.bishe.mentality.entity.Article">
+        update t_article set article_Name=#{article_Name},article_category=#{article_category},article_content=#{article_content},article_Time=#{article_Time} where id=#{id}
+    </update>
+</mapper>

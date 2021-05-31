@@ -10,6 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ScoreAndStu {
+    private Integer e_count;
     private Integer e_score;
     private String s_college;
     private String s_no;
